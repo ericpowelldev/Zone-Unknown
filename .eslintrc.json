@@ -26,12 +26,12 @@
       "camelcase": "error",
       "brace-style": "error",
       "indent": [
-          "error",
+          "warn",
           4
       ],
       "quotes": [
-          "error",
-          "double"
+          "warn",
+          "backticks"
       ],
       "semi": [
           "error",
