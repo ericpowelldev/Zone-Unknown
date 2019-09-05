@@ -235,22 +235,28 @@ let psFuelEvents = [
 
 let itemEvents = [
     {
-        event: "You found the Bio-Scanner! Now you can scan flora & fauna."
+        event: "You found the Bio-Scanner! Now you can scan flora & fauna.",
+        id: "BioScanner"
     },
     {
-        event: "You found the Geo-Mapper! Now you can map the area & move quickly."
+        event: "You found the Geo-Mapper! Now you can map the area & move quickly.",
+        id: "GeoMapper"
     },
     {
-        event: "You found the Lazer! Now you can defend yourself in battle."
+        event: "You found the Lazer! Now you can defend yourself in battle.",
+        id: "Lazer"
     },
     {
-        event: "You found the Jetpack! Now you can fly like an eagle, to the sea!"
+        event: "You found the Jetpack! Now you can fly like an eagle, to the sea!",
+        id: "Jetpack"
     },
     {
-        event: "You found the Water-Filter! Now you can replenish your HP at water sources!"
+        event: "You found the Water-Filter! Now you can replenish your HP at water sources!",
+        id: "WaterFilter"
     },
     {
-        event: "You found the O2-Scrubber! Now you can extract oxygen!"
+        event: "You found the O2-Scrubber! Now you can extract oxygen!",
+        id: "O2Scrubber"
     },
 ];
 
