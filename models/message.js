@@ -8,13 +8,6 @@ module.exports = function (sequelize, DataTypes) {
         {
             timestamps: false
         });
-
-    // Messages.associate = function(models){
-    //     Messages.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: true
-    //         }
-    //     });
-    // };
+        
     return Messages;
 };
