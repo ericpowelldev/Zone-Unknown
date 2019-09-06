@@ -1,19 +1,13 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-
-{{!-- WELCOME MESSAGE --}}
-        <h1>{{msg}}</h1>
-
-{{!-- BUTTONS --}} 
-<a href="/newgame"><button type="button" id="newGame" class="btn btn-primary btn-lg">New Game</button></a>
-<a href="/congame"><button type="button" id="conGame" class="btn btn-secondary btn-lg">Continue Game</button></a>
-
-      </div>
-    </div>
+<div class="mainDrop">
+  <div class="mainForm">
+    <img id="mainLogo" src="images/zu_head_white.png">
+    <p>Welcome to ZONE UNKNOWN, an adventure game based on survival. You find yourself stranded in a solar system due to your warp drive breaking down. Explore 3 planets and find parts to rebuild your warp drive. Along the way, you will encounter harsh events that will test your survival skills. You need to manage your HEALTH, OXYGEN and FUEL. When your HEALTH hits 0, you lose! Good luck and don't forget to use the chat if you get stuck.</p>
+    <p>Please enter a username and password. Both are required. Only 1 saved game is stored on your profile, so selecting CONTINUE will resume your last session and selecting NEW GAME will reset all of your progress.</p>
+    <br>
+    <input id="usernameInput" type="input" placeholder="USERNAME">
+    <div class="mainButton" id="continue"><p>CONTINUE</p></div>
+    <div class="mainButton" id="newGame"><p>NEW GAME</p></div>
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/main.js"></script>

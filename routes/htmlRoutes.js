@@ -8,20 +8,10 @@ module.exports = function (app) {
     });
   });
 
-  //on click to new game page
-  app.get("/newgame", function (req, res) {
-    res.render("newgame", {
-      msg: "New Game Page!"
-    });
+  // Load game page
+  app.get("/game", function (req, res) {
+    res.render("game");
   });
-
-  //On Click to continue game page
-  app.get("/congame", function (req, res) {
-      res.render("congame", {
-        msg: "Continue Game Page!"
-      });
-    });
-
 
   // Load example page and pass in an example by id
   app.get("/congame/:user_name", function (req, res) {
