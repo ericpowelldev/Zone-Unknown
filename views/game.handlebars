@@ -24,7 +24,17 @@
 <div class="navBar">
   <div class="navContainer">
     <div class="navLeft">
-      <p id="chat">CHAT</p>
+      <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <div id="history"></div>
+          <form id="chatForm">
+            <input type="text" id="msg_text" name="msg_text" />
+            <input type="submit" id="submit" value="Send!" />
+          </form>
+        </div>
+      </div>
+      <p id="chat" onclick="openNav()">CHAT</p>
     </div>
     <div class="navMid">
       <img id="home" src="images/zu_head_white.png">
@@ -234,3 +244,9 @@
     </div>
   </div>
 </div>
+
+{{!-- SOCKET SCRIPT TAGS --}}
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/js/messages.js"></script>

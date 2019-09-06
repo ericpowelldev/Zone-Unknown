@@ -102,3 +102,11 @@ $(document).on("click", "#continue", continueGame);
 $(document).on("click", "#newGame", newGame);
 $(document).on("click", "#home", goHome);
 $(document).on("click", ".hex", gridMove);
+
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}

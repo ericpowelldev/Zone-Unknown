@@ -446,3 +446,84 @@ ol.lg-4 {
     -o-animation:gradientBG 180s linear infinite;
     animation:gradientBG 180s linear infinite;
 }
+
+
+/* SOCKET */
+
+#chatForm {
+    margin: 15px 0;
+   }
+   #msg_text {
+    border: 2px solid #eb5424;
+    border-radius: 5px;
+    padding: 5px;
+    width: 75%;
+   }
+   #submit {
+    background: #eb5424;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 7px 5px;
+    width: 19%;
+   }
+   #history {
+    background: #FFF;
+    border: 2px solid #eb5424;
+    height: 550px;
+    overflow: scroll;
+   }
+
+   /* MODAL  */
+
+   .overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+  }
+  
+  .overlay-content {
+    position: relative;
+    top: 5%;
+    width: 90%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+  }
+  
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    color: #818181;
+    transition: 0.3s;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    font-size: 60px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
