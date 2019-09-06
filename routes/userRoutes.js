@@ -1,48 +1,63 @@
-app.get("/api/user/:id", function (req, res) {
-    db.User.findOne({
-        where: {
-            id: req.params.id
-        }
-    })
-        .then(function (zu_db) {
-            res.json(zu_db);
-        });
-});
+var db = require("../models");
 
-app.put("/api/user/:id", function (req, res) {
-    let userToUpdate = req.params.id;
-    db.User.update({
-        userObject
-    },
-        {
+module.exports = function (app) {
+    app.get("/api/users", function (req, res) {
+        db.Users.findAll({})
+            .then(function (obj) {
+                res.json(obj);
+            });
+    });
+
+    app.get("/api/users/:username", function (req, res) {
+        db.Users.findOne({
             where: {
-                id: userToUpdate
+                username: req.params.username
             }
-        }).then(function (zu_db) {
-            res.json(zu_db);
+        }).then(function (obj) {
+            res.json(obj);
+            console.log("\n\nFIND USER:\n\n" + JSON.stringify(req.params.username) + "\n\n");
         });
+    });
 
-});
+    app.post("/api/users", function (req, res) {
+        db.Users.create({
+            username: req.body.username,
+            hasBioScanner: req.body.hasBioScanner,
+            hasGeoMapper: req.body.hasGeoMapper,
+            hasLazer: req.body.hasLazer,
+            hasJetpack: req.body.hasJetpack,
+            hasWaterFilter: req.body.hasWaterFilter,
+            hasO2Scrubber: req.body.hasO2Scrubber,
+            warpCount: req.body.warpCount,
+            health: req.body.health,
+            oxygen: req.body.oxygen,
+            fuel: req.body.fuel,
+            planet: req.body.planet
+        }).then(function (obj) {
+            res.json(obj);
+            console.log("\n\nADDED NEW USER:\n\n" + JSON.stringify(req.body) + "\n\n");
+        });
+    });
 
-// app.put("/api/user/:id/piece", function (req, res) {
-//     let userToUpdate = req.params.id;
-//     let piece;
+    app.put("/api/users", function (req, res) {
+        db.Users.update(req.body, {
+            where: {
+                username: req.body.username
+            }
+        }).then(function (obj) {
+            res.json(obj);
+            console.log("\n\nGAME SAVED FOR USER:\n\n" + JSON.stringify(req.body) + "\n\n");
+        });
+    });
 
-//     for (let b = 0; b < warpDriveEvents.length; b++) {
-//         if (req.body.piece === warpDriveEvents[b].piece) {
-//             piece = warpDriveEvents[b].piece;
-//         };
-//     }
-
-//     db.User.update({
-//         [piece]: true
-//     },
-//         {
-//             where: {
-//                 id: userToUpdate
-//             }
-//         }).then(function (zu_db) {
-//             res.json(zu_db);
-//         });
-
-// });
+    app.delete("/api/users/:username", function (req, res) {
+        db.Users.destroy({
+            where: {
+                username: req.params.username
+            }
+        }).then(function (obj) {
+            res.json(obj);
+            console.log("\n\nDELETED USER:\n\n" + JSON.stringify(req.params.username) + "\n\n");
+        });
+    });
+}

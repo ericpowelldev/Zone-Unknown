@@ -30,7 +30,8 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app);
+// require("./routes/apiRoutes")(app);
+require("./routes/userRoutes")(app);
 require("./routes/htmlRoutes")(app);
 // require("./routes/messages-api-routes.js")(app);
 
