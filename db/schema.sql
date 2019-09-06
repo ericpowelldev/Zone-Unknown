@@ -33,7 +33,10 @@ create table user (
   hasJetpack boolean default false,
   hasWaterFilter boolean default false,
   hasO2Scrubber boolean default false,
-  counter boolean default 0 not null,
+  counter int default 0 not null,
+  health int default 20 not null,
+  fuel int default 0 not null,
+  oxygen int default 10 not null,
   level boolean default 0 not null,
   PRIMARY KEY (id)
 )
