@@ -698,12 +698,17 @@ $(document).on("click", "#newGame", newGame);
 //////////////////////////////   GAME PAGE FUNCTIONS   //////////////////////////////
 
 
+let chatUser = "";
+chatUser = localStorage.getItem('username');
+console.log(chatUser);
 
 function start() {
     loadSavedGame()
     hideHTML();
     showPlanet();
     gridChange();
+    getMessages();
+    onRowAdded();
 }
 
 // Function to load a previously saved game
@@ -811,6 +816,7 @@ function gridChange() {
     });
 }
 
+
 $(document).ready(function () {
     // console.log(`HREF: ` + window.location.href);
     // console.log(`HOSTNAME: ` + window.location.hostname);
@@ -833,80 +839,85 @@ $(document).on("click", ".hex", gridMove);
 //////////////////////////////   CHAT FUNCTIONS (SOCKET-IO)   //////////////////////////////
 
 
+//get function to grab all messages in the database and display in the chatroom
+function getMessages() {
+
+    $.ajax({
+        method: "GET",
+        url: "/api/messages/",
+        accept: "application/json"
+    }).then(function (data) {
+        console.log("This Data: " + data);
+        messages = data;
+        if (!messages || !messages.length) {
+            displayEmpty();
+        } else {
+            for (var i = 0; i < messages.length; i++) {
+                var final_message = $("<p />").text(messages[i].message);
+                $("#history").append(final_message);
+                onRowAdded();
+            }
+        }
+    });
+}
+
+//displays no chat history if there is none in the database
+function displayEmpty() {
+    var noMessages = "******No Chat History******"
+    var final_message = $("<p />").text(noMessages);
+    $("#history").append(final_message);
+}
+
+//connects to socket, sends to server and displays chat message
+var socket = io.connect();
+$("form#chatForm").submit(function (e) {
+    e.preventDefault();
+
+    socket.emit("send message", $(this).find("#msg_text").val(), chatUser, function () {
+        $("form#chatForm #msg_text").val("");
+    });
+});
+socket.on("update messages", function (msg) {
+    var final_message = $("<p />").text(msg);
+    $("#history").append(final_message);
+
+    console.log(msg);
+    saveMessage(msg);
+    onRowAdded();
+});
+
+//alters message and user into an object and runs post
+function saveMessage(msg) {
+    var newMessage = {
+        message: msg,
+        user: chatUser
+    };
+    submitMessage(newMessage);
+};
+//post function for message object with username
+function submitMessage(newMessage) {
+    console.log(newMessage);
+    $.ajax({
+        url: "/api/messages",
+        type: "POST",
+        data: newMessage
+    }).then((response) => {
+        console.log(response);
+    });
+};
+
+//scrolling function
+onRowAdded = function() {
+    $('#history').animate({scrollTop: $('#history').prop('scrollHeight')});
+};
+
+///opens modal for chat
 
 function openSocket() {
     document.getElementById("myNav").style.height = "100%";
-    var userName = "";
-    getMessages();
-    //prompt for user to get name
-    var userInfo = prompt("Please enter your username", "Username Here")
-    if (userInfo != null) {
-        userName = userInfo;
-    }
-    console.log(userInfo);
-    //connects to socket, sends to server and displays chat message
-    var socket = io.connect();
-    $("form#chatForm").submit(function (e) {
-        e.preventDefault();
-
-        socket.emit("send message", $(this).find("#msg_text").val(), userName, function () {
-            $("form#chatForm #msg_text").val("");
-        });
-    });
-    socket.on("update messages", function (msg) {
-        var final_message = $("<p />").text(msg);
-        $("#history").append(final_message);
-
-        console.log(msg);
-        saveMessage(msg);
-    });
-
-    //alters message and user into an object and runs post
-    function saveMessage(msg) {
-        var newMessage = {
-            message: msg,
-            user: userName
-        };
-        submitMessage(newMessage);
-    };
-    //post function for message object with username
-    function submitMessage(newMessage) {
-        console.log(newMessage);
-        $.ajax({
-            url: "/api/messages",
-            type: "POST",
-            data: newMessage
-        }).then((response) => {
-            console.log(response);
-        });
-    };
-    //get function to grab all messages in the database and display in the chatroom
-    function getMessages() {
-
-        $.ajax({
-            method: "GET",
-            url: "/api/messages/",
-            accept: "application/json"
-        }).then(function (data) {
-            console.log("This Data: " + data);
-            messages = data;
-            if (!messages || !messages.length) {
-                displayEmpty();
-            } else {
-                for (var i = 0; i < messages.length; i++) {
-                    var final_message = $("<p />").text(messages[i].message);
-                    $("#history").append(final_message);
-                }
-            }
-        });
-    }
-    //displays no chat history if there is none in the database
-    function displayEmpty() {
-        var noMessages = "******No Chat History******"
-        var final_message = $("<p />").text(noMessages);
-        $("#history").append(final_message);
-    }
 }
+
+//closes modal for chat
 
 function closeSocket() {
     document.getElementById("myNav").style.height = "0%";
