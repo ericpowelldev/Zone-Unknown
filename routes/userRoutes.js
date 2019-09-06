@@ -1,3 +1,4 @@
+module.exports = function (app) {
 app.get("/api/user/:id", function (req, res) {
     db.User.findOne({
         where: {
@@ -23,6 +24,10 @@ app.put("/api/user/:id", function (req, res) {
         });
 
 });
+}
+
+
+
 
 // app.put("/api/user/:id/piece", function (req, res) {
 //     let userToUpdate = req.params.id;
