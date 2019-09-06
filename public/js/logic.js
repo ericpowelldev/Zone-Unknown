@@ -1,3 +1,7 @@
+//////////////////////////////   LOCAL STORAGE USER OBJECT   //////////////////////////////
+
+
+
 let obj = {
     username: ``,
     hasBioScanner: false,
@@ -10,34 +14,615 @@ let obj = {
     health: 20,
     oxygen: 10,
     fuel: 0,
-    planet: 0
+    planet: 1,
+    planet1: {
+        hex1: {
+            hexXY: [0, 2],
+            visited: false,
+            event: ``
+        },
+        hex2: {
+            hexXY: [1, 2],
+            visited: false,
+            event: ``
+        },
+        hex3: {
+            hexXY: [2, 2],
+            visited: false,
+            event: ``
+        },
+        hex4: {
+            hexXY: [-1, 1],
+            visited: false,
+            event: ``
+        },
+        hex5: {
+            hexXY: [0, 1],
+            visited: false,
+            event: ``
+        },
+        hex6: {
+            hexXY: [1, 1],
+            visited: false,
+            event: ``
+        },
+        hex7: {
+            hexXY: [2, 1],
+            visited: false,
+            event: ``
+        },
+        hex8: {
+            hexXY: [-2, 0],
+            visited: false,
+            event: ``
+        },
+        hex9: {
+            hexXY: [-1, 0],
+            visited: false,
+            event: ``
+        },
+        hex10: {
+            hexXY: [0, 0],
+            visited: true,
+            event: `none`
+        },
+        hex11: {
+            hexXY: [1, 0],
+            visited: false,
+            event: ``
+        },
+        hex12: {
+            hexXY: [2, 0],
+            visited: false,
+            event: ``
+        },
+        hex13: {
+            hexXY: [-2, -1],
+            visited: false,
+            event: ``
+        },
+        hex14: {
+            hexXY: [-1, -1],
+            visited: false,
+            event: ``
+        },
+        hex15: {
+            hexXY: [0, -1],
+            visited: false,
+            event: ``
+        },
+        hex16: {
+            hexXY: [1, -1],
+            visited: false,
+            event: ``
+        },
+        hex17: {
+            hexXY: [-2, -2],
+            visited: false,
+            event: ``
+        },
+        hex18: {
+            hexXY: [-1, -2],
+            visited: false,
+            event: ``
+        },
+        hex19: {
+            hexXY: [0, -2],
+            visited: false,
+            event: ``
+        }
+    },
+    planet2: {
+        hex1: {
+            hexXY: [0, 3],
+            visited: false,
+            event: ``
+        },
+        hex2: {
+            hexXY: [1, 3],
+            visited: false,
+            event: ``
+        },
+        hex3: {
+            hexXY: [2, 3],
+            visited: false,
+            event: ``
+        },
+        hex4: {
+            hexXY: [3, 3],
+            visited: false,
+            event: ``
+        },
+        hex5: {
+            hexXY: [-1, 2],
+            visited: false,
+            event: ``
+        },
+        hex6: {
+            hexXY: [0, 2],
+            visited: false,
+            event: ``
+        },
+        hex7: {
+            hexXY: [1, 2],
+            visited: false,
+            event: ``
+        },
+        hex8: {
+            hexXY: [2, 2],
+            visited: false,
+            event: ``
+        },
+        hex9: {
+            hexXY: [3, 2],
+            visited: false,
+            event: ``
+        },
+        hex10: {
+            hexXY: [-2, 1],
+            visited: false,
+            event: ``
+        },
+        hex11: {
+            hexXY: [-1, 1],
+            visited: false,
+            event: ``
+        },
+        hex12: {
+            hexXY: [0, 1],
+            visited: false,
+            event: ``
+        },
+        hex13: {
+            hexXY: [1, 1],
+            visited: false,
+            event: ``
+        },
+        hex14: {
+            hexXY: [2, 1],
+            visited: false,
+            event: ``
+        },
+        hex15: {
+            hexXY: [3, 1],
+            visited: false,
+            event: ``
+        },
+        hex16: {
+            hexXY: [-3, 0],
+            visited: false,
+            event: ``
+        },
+        hex17: {
+            hexXY: [-2, 0],
+            visited: false,
+            event: ``
+        },
+        hex18: {
+            hexXY: [-1, 0],
+            visited: false,
+            event: ``
+        },
+        hex19: {
+            hexXY: [0, 0],
+            visited: true,
+            event: `none`
+        },
+        hex20: {
+            hexXY: [1, 0],
+            visited: false,
+            event: ``
+        },
+        hex21: {
+            hexXY: [2, 0],
+            visited: false,
+            event: ``
+        },
+        hex22: {
+            hexXY: [3, 0],
+            visited: false,
+            event: ``
+        },
+        hex23: {
+            hexXY: [-3, -1],
+            visited: false,
+            event: ``
+        },
+        hex24: {
+            hexXY: [-2, -1],
+            visited: false,
+            event: ``
+        },
+        hex25: {
+            hexXY: [-1, -1],
+            visited: false,
+            event: ``
+        },
+        hex26: {
+            hexXY: [0, -1],
+            visited: false,
+            event: ``
+        },
+        hex27: {
+            hexXY: [1, -1],
+            visited: false,
+            event: ``
+        },
+        hex28: {
+            hexXY: [2, -1],
+            visited: false,
+            event: ``
+        },
+        hex29: {
+            hexXY: [-3, -2],
+            visited: false,
+            event: ``
+        },
+        hex30: {
+            hexXY: [-2, -2],
+            visited: false,
+            event: ``
+        },
+        hex31: {
+            hexXY: [-1, -2],
+            visited: false,
+            event: ``
+        },
+        hex32: {
+            hexXY: [0, -2],
+            visited: false,
+            event: ``
+        },
+        hex33: {
+            hexXY: [1, -2],
+            visited: false,
+            event: ``
+        },
+        hex34: {
+            hexXY: [-3, -3],
+            visited: false,
+            event: ``
+        },
+        hex35: {
+            hexXY: [-2, -3],
+            visited: false,
+            event: ``
+        },
+        hex36: {
+            hexXY: [-1, -3],
+            visited: false,
+            event: ``
+        },
+        hex37: {
+            hexXY: [0, -3],
+            visited: false,
+            event: ``
+        }
+    },
+    planet3: {
+        hex1: {
+            hexXY: [0, 4],
+            visited: false,
+            event: ``
+        },
+        hex2: {
+            hexXY: [1, 4],
+            visited: false,
+            event: ``
+        },
+        hex3: {
+            hexXY: [2, 4],
+            visited: false,
+            event: ``
+        },
+        hex4: {
+            hexXY: [3, 4],
+            visited: false,
+            event: ``
+        },
+        hex5: {
+            hexXY: [4, 4],
+            visited: false,
+            event: ``
+        },
+        hex6: {
+            hexXY: [-1, 3],
+            visited: false,
+            event: ``
+        },
+        hex7: {
+            hexXY: [0, 3],
+            visited: false,
+            event: ``
+        },
+        hex8: {
+            hexXY: [1, 3],
+            visited: false,
+            event: ``
+        },
+        hex9: {
+            hexXY: [2, 3],
+            visited: false,
+            event: ``
+        },
+        hex10: {
+            hexXY: [3, 3],
+            visited: false,
+            event: ``
+        },
+        hex11: {
+            hexXY: [4, 3],
+            visited: false,
+            event: ``
+        },
+        hex12: {
+            hexXY: [-2, 2],
+            visited: false,
+            event: ``
+        },
+        hex13: {
+            hexXY: [-1, 2],
+            visited: false,
+            event: ``
+        },
+        hex14: {
+            hexXY: [0, 2],
+            visited: false,
+            event: ``
+        },
+        hex15: {
+            hexXY: [1, 2],
+            visited: false,
+            event: ``
+        },
+        hex16: {
+            hexXY: [2, 2],
+            visited: false,
+            event: ``
+        },
+        hex17: {
+            hexXY: [3, 2],
+            visited: false,
+            event: ``
+        },
+        hex18: {
+            hexXY: [4, 2],
+            visited: false,
+            event: ``
+        },
+        hex19: {
+            hexXY: [-3, 1],
+            visited: false,
+            event: ``
+        },
+        hex20: {
+            hexXY: [-2, 1],
+            visited: false,
+            event: ``
+        },
+        hex21: {
+            hexXY: [-1, 1],
+            visited: false,
+            event: ``
+        },
+        hex22: {
+            hexXY: [0, 1],
+            visited: false,
+            event: ``
+        },
+        hex23: {
+            hexXY: [1, 1],
+            visited: false,
+            event: ``
+        },
+        hex24: {
+            hexXY: [2, 1],
+            visited: false,
+            event: ``
+        },
+        hex25: {
+            hexXY: [3, 1],
+            visited: false,
+            event: ``
+        },
+        hex26: {
+            hexXY: [4, 1],
+            visited: false,
+            event: ``
+        },
+        hex27: {
+            hexXY: [-4, 0],
+            visited: false,
+            event: ``
+        },
+        hex28: {
+            hexXY: [-3, 0],
+            visited: false,
+            event: ``
+        },
+        hex29: {
+            hexXY: [-2, 0],
+            visited: false,
+            event: ``
+        },
+        hex30: {
+            hexXY: [-1, 0],
+            visited: false,
+            event: ``
+        },
+        hex31: {
+            hexXY: [0, 0],
+            visited: true,
+            event: `none`
+        },
+        hex32: {
+            hexXY: [1, 0],
+            visited: false,
+            event: ``
+        },
+        hex33: {
+            hexXY: [2, 0],
+            visited: false,
+            event: ``
+        },
+        hex34: {
+            hexXY: [3, 0],
+            visited: false,
+            event: ``
+        },
+        hex35: {
+            hexXY: [4, 0],
+            visited: false,
+            event: ``
+        },
+        hex36: {
+            hexXY: [-4, -1],
+            visited: false,
+            event: ``
+        },
+        hex37: {
+            hexXY: [-3, -1],
+            visited: false,
+            event: ``
+        },
+        hex38: {
+            hexXY: [-2, -1],
+            visited: false,
+            event: ``
+        },
+        hex39: {
+            hexXY: [-1, -1],
+            visited: false,
+            event: ``
+        },
+        hex40: {
+            hexXY: [0, -1],
+            visited: false,
+            event: ``
+        },
+        hex41: {
+            hexXY: [1, -1],
+            visited: false,
+            event: ``
+        },
+        hex42: {
+            hexXY: [2, -1],
+            visited: false,
+            event: ``
+        },
+        hex43: {
+            hexXY: [3, -1],
+            visited: false,
+            event: ``
+        },
+        hex44: {
+            hexXY: [-4, -2],
+            visited: false,
+            event: ``
+        },
+        hex45: {
+            hexXY: [-3, -2],
+            visited: false,
+            event: ``
+        },
+        hex46: {
+            hexXY: [-2, -2],
+            visited: false,
+            event: ``
+        },
+        hex47: {
+            hexXY: [-1, -2],
+            visited: false,
+            event: ``
+        },
+        hex48: {
+            hexXY: [0, -2],
+            visited: false,
+            event: ``
+        },
+        hex49: {
+            hexXY: [1, -2],
+            visited: false,
+            event: ``
+        },
+        hex50: {
+            hexXY: [2, -2],
+            visited: false,
+            event: ``
+        },
+        hex51: {
+            hexXY: [-4, -3],
+            visited: false,
+            event: ``
+        },
+        hex52: {
+            hexXY: [-3, -3],
+            visited: false,
+            event: ``
+        },
+        hex53: {
+            hexXY: [-2, -3],
+            visited: false,
+            event: ``
+        },
+        hex54: {
+            hexXY: [-1, -3],
+            visited: false,
+            event: ``
+        },
+        hex55: {
+            hexXY: [0, -3],
+            visited: false,
+            event: ``
+        },
+        hex56: {
+            hexXY: [1, -3],
+            visited: false,
+            event: ``
+        },
+        hex57: {
+            hexXY: [-4, -4],
+            visited: false,
+            event: ``
+        },
+        hex58: {
+            hexXY: [-3, -4],
+            visited: false,
+            event: ``
+        },
+        hex59: {
+            hexXY: [-2, -4],
+            visited: false,
+            event: ``
+        },
+        hex60: {
+            hexXY: [-1, -4],
+            visited: false,
+            event: ``
+        },
+        hex61: {
+            hexXY: [0, -4],
+            visited: false,
+            event: ``
+        }
+    }
 }
 
-// LOOK INTO WINDOW.NAME FOR STORING PERSISTENT DATA ACROSS WINDOWS
 
-function start() {
-    hideHTML();
-    showSM();
-    gridChange();
-}
-start();
 
-function hideHTML() {
-    $(`#modalDrop`).hide();
-    $(`#grid-sm`).hide();
-    $(`#grid-md`).hide();
-    $(`#grid-lg`).hide();
+//////////////////////////////   PLANET GENERATION   //////////////////////////////
+
+
+
+function generatePlanets() {
+
 }
 
-function showSM() {
-    $(`#grid-sm`).show();
-}
-function showMD() {
-    $(`#grid-md`).show();
-}
-function showLG() {
-    $(`#grid-lg`).show();
-}
+
+
+//////////////////////////////   HOME PAGE FUNCTIONS   //////////////////////////////
+
+
 
 // Continue button on home page
 function continueGame() {
@@ -95,6 +680,43 @@ function newGame() {
 // Function to create a new game
 function createNewGame() {
     location.href = `/game`;
+}
+
+$(document).on("click", "#continue", continueGame);
+$(document).on("click", "#newGame", newGame);
+
+
+
+//////////////////////////////   GAME PAGE FUNCTIONS   //////////////////////////////
+
+
+
+function start() {
+    hideHTML();
+    showPlanet();
+    gridChange();
+}
+
+function hideHTML() {
+    $(`#modalDrop`).hide();
+}
+
+function showPlanet() {
+    if (obj.planet === 1) {
+        $(`#grid-sm`).show();
+        $(`#grid-md`).hide();
+        $(`#grid-lg`).hide();
+    }
+    else if (obj.planet === 2) {
+        $(`#grid-sm`).hide();
+        $(`#grid-md`).show();
+        $(`#grid-lg`).hide();
+    }
+    else if (obj.planet === 3) {
+        $(`#grid-sm`).hide();
+        $(`#grid-md`).hide();
+        $(`#grid-lg`).show();
+    }
 }
 
 function goHome() {
@@ -162,13 +784,25 @@ function gridChange() {
             $(this).addClass(`hexNotVisitedNoReach`);
         }
         else {
-            console.log(`No change was made for this hex!`);
+            console.log(`No change was made for this hex...`);
         }
     });
 }
 
-$(document).on("click", "#continue", continueGame);
-$(document).on("click", "#newGame", newGame);
+$(document).ready(function () {
+    // console.log(`HREF: ` + window.location.href);
+    // console.log(`HOSTNAME: ` + window.location.hostname);
+    // console.log(`PATHNAME: ` + window.location.pathname);
+    if (window.location.pathname === `/`) {
+        
+    }
+    else if (window.location.pathname === `/game`) {
+        start();
+    }
+    else {
+        console.log(`PATHNAME: ` + window.location.pathname);
+    }
+});
 $(document).on("click", "#home", goHome);
 $(document).on("click", ".hex", gridMove);
 
