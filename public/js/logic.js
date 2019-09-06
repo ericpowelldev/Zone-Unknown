@@ -610,6 +610,14 @@ let obj = {
 
 
 
+//////////////////////////////   TESTING   //////////////////////////////
+
+
+
+
+
+
+
 //////////////////////////////   PLANET GENERATION   //////////////////////////////
 
 
@@ -627,29 +635,30 @@ function generatePlanets() {
 // Continue button on home page
 function continueGame() {
     obj.username = $(`#usernameInput`).val().trim().toLowerCase();
-    // Check for existing username
-    $.get("/api/users/" + obj.username, function (data) {
-        // console.log(data);
-        if (data) {
-            loadSavedGame(data);
-        }
-        else {
-            alert("No save games found under this username!");
-        }
-    });
-}
-// Function to load a previously saved game
-function loadSavedGame(data) {
-    obj = data;
-    console.log(obj);
-    location.href = `/game`;
+    localStorage.setItem('username', obj.username);
+
+    // Check if username is valid
+    if (obj.username.length > 2 && obj.username.length < 26) {
+        // Check for existing username
+        $.get("/api/users/" + obj.username, function (data) {
+            // console.log(data);
+            if (data) {
+                location.href = `/game`;
+            }
+            else {
+                alert("No save games found under this username!");
+            }
+        });
+    }
 }
 
 // New Game button on home page
 function newGame() {
     obj.username = $(`#usernameInput`).val().trim().toLowerCase();
+    localStorage.setItem('username', obj.username);
+
     // Check if username is valid
-    if (obj.username.length > 2) {
+    if (obj.username.length > 2 && obj.username.length < 26) {
         // Check for existing username
         $.get("/api/users/" + obj.username, function (data) {
             // console.log(data);
@@ -660,26 +669,25 @@ function newGame() {
                     url: "/api/users",
                     data: obj
                 }).then(function () {
-                    createNewGame();
+                    localStorage.clear();
+                    localStorage.setItem('save', JSON.stringify(obj));
+                    location.href = `/game`;
                 });
             }
             else {
                 // Create a new user and save if username doesn't exist
                 $.post("/api/users", obj, function (data) {
                     // console.log(data);
-                    createNewGame();
+                    localStorage.setItem('save', JSON.stringify(obj));
+                    location.href = `/game`;
                 });
             }
         });
     }
     else {
-        alert("Please enter more than 2 characters for your username!");
+        alert("Please enter a username between 3 & 25 characters!");
     }
 
-}
-// Function to create a new game
-function createNewGame() {
-    location.href = `/game`;
 }
 
 $(document).on("click", "#continue", continueGame);
@@ -692,9 +700,23 @@ $(document).on("click", "#newGame", newGame);
 
 
 function start() {
+    loadSavedGame()
     hideHTML();
     showPlanet();
     gridChange();
+}
+
+// Function to load a previously saved game
+function loadSavedGame() {
+    let newObj = JSON.parse(localStorage.getItem('save'));
+    console.log(newObj);
+    if (newObj.username === localStorage.getItem('username')) {
+        newObj = obj;
+    }
+    else {
+        alert("No save games found under this username!");
+        location.href = `/`;
+    }
 }
 
 function hideHTML() {
@@ -807,6 +829,91 @@ $(document).on("click", "#home", goHome);
 $(document).on("click", ".hex", gridMove);
 
 
+
+//////////////////////////////   CHAT FUNCTIONS (SOCKET-IO)   //////////////////////////////
+
+
+
+function openSocket() {
+    document.getElementById("myNav").style.height = "100%";
+    var userName = "";
+    getMessages();
+    //prompt for user to get name
+    var userInfo = prompt("Please enter your username", "Username Here")
+    if (userInfo != null) {
+        userName = userInfo;
+    }
+    console.log(userInfo);
+    //connects to socket, sends to server and displays chat message
+    var socket = io.connect();
+    $("form#chatForm").submit(function (e) {
+        e.preventDefault();
+
+        socket.emit("send message", $(this).find("#msg_text").val(), userName, function () {
+            $("form#chatForm #msg_text").val("");
+        });
+    });
+    socket.on("update messages", function (msg) {
+        var final_message = $("<p />").text(msg);
+        $("#history").append(final_message);
+
+        console.log(msg);
+        saveMessage(msg);
+    });
+
+    //alters message and user into an object and runs post
+    function saveMessage(msg) {
+        var newMessage = {
+            message: msg,
+            user: userName
+        };
+        submitMessage(newMessage);
+    };
+    //post function for message object with username
+    function submitMessage(newMessage) {
+        console.log(newMessage);
+        $.ajax({
+            url: "/api/messages",
+            type: "POST",
+            data: newMessage
+        }).then((response) => {
+            console.log(response);
+        });
+    };
+    //get function to grab all messages in the database and display in the chatroom
+    function getMessages() {
+
+        $.ajax({
+            method: "GET",
+            url: "/api/messages/",
+            accept: "application/json"
+        }).then(function (data) {
+            console.log("This Data: " + data);
+            messages = data;
+            if (!messages || !messages.length) {
+                displayEmpty();
+            } else {
+                for (var i = 0; i < messages.length; i++) {
+                    var final_message = $("<p />").text(messages[i].message);
+                    $("#history").append(final_message);
+                }
+            }
+        });
+    }
+    //displays no chat history if there is none in the database
+    function displayEmpty() {
+        var noMessages = "******No Chat History******"
+        var final_message = $("<p />").text(noMessages);
+        $("#history").append(final_message);
+    }
+}
+
+function closeSocket() {
+    document.getElementById("myNav").style.height = "0%";
+}
+
+
+
 //////////////////////////////   UNUSED FUNCTIONS (FOR REFERENCE)   //////////////////////////////
 
 
@@ -877,82 +984,17 @@ function deleteUser(username) {
     });
 }
 
-//CHAT MODAL for socket-io
 
-function openSocket() {
-    document.getElementById("myNav").style.height = "100%";
-    var userName = "";
-    getMessages();
-    //prompt for user to get name
-    var userInfo = prompt("Please enter your username", "Username Here")
-    if (userInfo != null) {
-        userName = userInfo;
-    }
-    console.log(userInfo);
-    //connects to socket, sends to server and displays chat message
-    var socket = io.connect();
-    $("form#chatForm").submit(function (e) {
-        e.preventDefault();
 
-        socket.emit("send message", $(this).find("#msg_text").val(), userName, function () {
-            $("form#chatForm #msg_text").val("");
-        });
-    });
-    socket.on("update messages", function (msg) {
-        var final_message = $("<p />").text(msg);
-        $("#history").append(final_message);
-
-        console.log(msg);
-        saveMessage(msg);
-    });
-
-    //alters message and user into an object and runs post
-    function saveMessage(msg) {
-        var newMessage = {
-            message: msg,
-            user: userName
-        };
-        submitMessage(newMessage);
-    };
-    //post function for message object with username
-    function submitMessage(newMessage) {
-        console.log(newMessage);
-        $.ajax({ 
-            url: "/api/messages", 
-            type: "POST", 
-            data: newMessage 
-        }).then((response) => {
-            console.log(response);
-        });
-    };
-    //get function to grab all messages in the database and display in the chatroom
-    function getMessages() {
-
-        $.ajax({
-            method: "GET",
-            url: "/api/messages/",
-            accept: "application/json"
-        }).then(function (data) {
-            console.log("This Data: " + data); 
-            messages = data;
-            if (!messages || !messages.length) {
-                displayEmpty();
-            } else {
-                for (var i = 0; i < messages.length; i++) {
-                    var final_message = $("<p />").text(messages[i].message);
-                    $("#history").append(final_message);
-                }
-            }
-        });
-    }
-    //displays no chat history if there is none in the database
-    function displayEmpty() {
-        var noMessages = "******No Chat History******"
-        var final_message = $("<p />").text(noMessages);
-        $("#history").append(final_message);
-    }
+function saveObj() {
+    localStorage.setItem('save', JSON.stringify(obj)); // Save the data based on the obj variable and turn it into one large string
 }
-
-function closeSocket() {
-    document.getElementById("myNav").style.height = "0%";
+function loadObj() {
+    obj = JSON.parse(localStorage.getItem('save')); // Replace the obj variable with the loaded values by parsing the large string
+}
+function loadStoreObj() {
+    let newObj = JSON.parse(localStorage.getItem('save')); // Parse the string back into a new object
+}
+function deleteSave() {
+    localStorage.clear(); // Delete all save data
 }

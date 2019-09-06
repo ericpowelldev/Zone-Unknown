@@ -15,12 +15,12 @@ module.exports = function (app) {
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
-    res.render("404");
-  });
+  // app.get("*", function (req, res) {
+  //   res.render("404");
+  // });
 
   //sends html for socket to server
-//   app.get("/socket-io", function (req, res) {
-//     res.sendFile(path.join(__dirname, '../public', 'socket-io.html'));
-//   });
+  //  app.get("/socket-io", function (req, res) {
+  //     res.sendFile(path.join(__dirname, '../public', 'socket-io.html'));
+  //   });
 };
