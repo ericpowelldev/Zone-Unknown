@@ -33,7 +33,7 @@ app.set("view engine", "handlebars");
 // require("./routes/apiRoutes")(app);
 require("./routes/userRoutes")(app);
 require("./routes/htmlRoutes")(app);
-// require("./routes/messages-api-routes.js")(app);
+require("./routes/messages-api-routes.js")(app);
 
 var syncOptions = { force: false };
 

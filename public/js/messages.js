@@ -1,6 +1,4 @@
 var userName = "";
-
-$(document).ready(function () {
 //prompt for user to get name
     var userInfo = prompt("Please enter your username", "Username Here")
     if (userInfo != null) {
@@ -25,7 +23,6 @@ $(document).ready(function () {
         saveMessage(msg);
     });
 
-});
 //alters message and user into an object and runs post
 function saveMessage(msg) {
     var newMessage = {

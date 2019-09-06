@@ -474,6 +474,8 @@ ol.lg-4 {
     border: 2px solid #eb5424;
     height: 550px;
     overflow: scroll;
+    color: #eb5424;
+    text-align: left;
    }
 
    /* MODAL  */
@@ -495,6 +497,7 @@ ol.lg-4 {
     position: relative;
     top: 5%;
     width: 90%;
+    max-height: 80%;
     text-align: center;
     margin-top: 30px;
     margin: auto;
