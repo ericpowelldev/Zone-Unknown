@@ -236,41 +236,45 @@ let psFuelEvents = [
 let itemEvents = [
     {
         event: "You found the Bio-Scanner! Now you can scan flora & fauna.",
-        id: "BioScanner"
+        item: "hasBioScanner"
     },
     {
         event: "You found the Geo-Mapper! Now you can map the area & move quickly.",
-        id: "GeoMapper"
+        item: "hasGeoMapper"
     },
     {
         event: "You found the Lazer! Now you can defend yourself in battle.",
-        id: "Lazer"
+        item: "hasLazer"
     },
     {
         event: "You found the Jetpack! Now you can fly like an eagle, to the sea!",
-        id: "Jetpack"
+        item: "hasJetpack"
     },
     {
         event: "You found the Water-Filter! Now you can replenish your HP at water sources!",
-        id: "WaterFilter"
+        item: "hasWaterFilter"
     },
     {
         event: "You found the O2-Scrubber! Now you can extract oxygen!",
-        id: "O2Scrubber"
+        item: "hasO2Scrubber"
     },
 ];
 
 let warpDriveEvents = [
     {
-        event: "You found the first warp drive piece!"
+        event: "You found the first warp drive piece!",
+        count: 0
     },
     {
-        event: "You found the second warp drive piece!"
+        event: "You found the second warp drive piece!",
+        count: 1
     },
     {
-        event: "You found the third & final warp drive piece! Now look for some uranium to fuel it."
+        event: "You found the third & final warp drive piece! Now look for some uranium to fuel it.",
+        count: 2
     },
     {
-        event: "You found uranium! Return to the ship to warp home!"
+        event: "You found uranium! Return to the ship to warp home!",
+        count: 3
     }
 ];
