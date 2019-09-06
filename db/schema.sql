@@ -4,36 +4,39 @@ CREATE DATABASE zu_db;
 DROP DATABASE IF EXISTS test_db;
 CREATE DATABASE test_db;
 
+-- user table schema --
 
---accounts table schema--
+CREATE TABLE users (
+  id INT AUTO_INCREMENT,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  hasBioScanner BOOLEAN DEFAULT false,
+  hasGeoMapper BOOLEAN DEFAULT false,
+  hasLazer BOOLEAN DEFAULT false,
+  hasJetpack BOOLEAN DEFAULT false,
+  hasWaterFilter BOOLEAN DEFAULT false,
+  hasO2Scrubber BOOLEAN DEFAULT false,
+  warpCount INT DEFAULT 0 NOT NULL,
+  health INT DEFAULT 20 NOT NULL,
+  oxygen INT DEFAULT 10 NOT NULL,
+  fuel INT DEFAULT 0 NOT NULL,
+  planet BOOLEAN DEFAULT 0 NOT NULL,
+  PRIMARY KEY (id)
+);
+
+-- accounts table schema --
 
 CREATE TABLE accounts (
-  id int AUTO_INCREMENT,
-  user_name varchar(50) NOT NULL,
-  saved_game varchar(50) NOT NULL,
-  logged_in boolean default false,
+  id INT AUTO_INCREMENT,
+  user_name VARCHAR(50) NOT NULL,
+  saved_game VARCHAR(50) NOT NULL,
+  logged_in BOOLEAN DEFAULT false,
   PRIMARY KEY(id)
 );
 
---socket table schema--
+-- socket table schema --
 
-create table messages (
-id int AUTO_INCREMENT,
-message text NOT NULL,
+CREATE TABLE messages (
+id INT AUTO_INCREMENT,
+message TEXT NOT NULL,
 PRIMARY KEY (id)
 );
-
--- user table schema --
-
-create table user (
-  id int AUTO_INCREMENT,
-  hasBioScanner boolean default false,
-  hasGeoMapper boolean default false,
-  hasLazer boolean default false,
-  hasJetpack boolean default false,
-  hasWaterFilter boolean default false,
-  hasO2Scrubber boolean default false,
-  counter boolean default 0 not null,
-  level boolean default 0 not null,
-  PRIMARY KEY (id)
-)
