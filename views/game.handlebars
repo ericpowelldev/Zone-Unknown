@@ -1,0 +1,236 @@
+{{!-- MODAL --}}
+
+<div id="modalDrop">
+  <div id="modalContainer">
+    <p>You come across a strange looking fruit. It has an alluring glow to it. You don't know why, but it seems to
+      be
+      calling you...</p>
+    <div class="modalButton">
+      <p>This is a test modal button. All choices/responses must stay under 3 lines to fit on different screens.
+        This is
+        a test to show you what it looks like...</p>
+    </div>
+    <div class="modalButton">
+      <p>This is a secondary choice.</p>
+    </div>
+    <div class="modalButton">
+      <p>This is a tertiary choice. There will be no more than 3 choices/responses to an event.</p>
+    </div>
+  </div>
+</div>
+
+{{!-- NAVBAR --}}
+
+<div class="navBar">
+  <div class="navContainer">
+    <div class="navLeft">
+      <p id="chat">CHAT</p>
+    </div>
+    <div class="navMid">
+      <img id="home" src="images/zu_head_white.png">
+    </div>
+    <div class="navRight">
+      <p id="menu">MENU</p>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="grid-base">
+
+  {{!-- SMALL GRID --}}
+
+  <div class="grid" id="grid-sm">
+    <ol class="sm-2">
+      <li class='hex' data-coordinates="0, 2" data-current="false" data-visited="false" data-reach="false"></li>
+      <li class='hex' data-coordinates="1, 2" data-current="false" data-visited="false" data-reach="false"></li>
+      <li class='hex' data-coordinates="2, 2" data-current="false" data-visited="false" data-reach="false"></li>
+    </ol>
+    <ol class="sm-1">
+      <li class='hex' data-coordinates="-1, 1" data-current="false" data-visited="false" data-reach="false"></li>
+      <li class='hex' data-coordinates="0, 1" data-current="false" data-visited="false" data-reach="true"></li>
+      <li class='hex' data-coordinates="1, 1" data-current="false" data-visited="false" data-reach="true"></li>
+      <li class='hex' data-coordinates="2, 1" data-current="false" data-visited="false" data-reach="false"></li>
+    </ol>
+    <ol class="sm-0">
+      <li class='hex' data-coordinates="-2, 0" data-current="false" data-visited="false" data-reach="false"></li>
+      <li class='hex' data-coordinates="-1, 0" data-current="false" data-visited="false" data-reach="true"></li>
+      <li class='hex' data-coordinates="0, 0" data-current="true" data-visited="true" data-reach="true"></li>
+      <li class='hex' data-coordinates="1, 0" data-current="false" data-visited="false" data-reach="true"></li>
+      <li class='hex' data-coordinates="2, 0" data-current="false" data-visited="false" data-reach="false"></li>
+    </ol>
+    <ol class="sm-1">
+      <li class='hex' data-coordinates="-2, -1" data-current="false" data-visited="false" data-reach="false"></li>
+      <li class='hex' data-coordinates="-1, -1" data-current="false" data-visited="false" data-reach="true"></li>
+      <li class='hex' data-coordinates="0, -1" data-current="false" data-visited="false" data-reach="true"></li>
+      <li class='hex' data-coordinates="1, -1" data-current="false" data-visited="false" data-reach="false"></li>
+    </ol>
+    <ol class="sm-2">
+      <li class='hex' data-coordinates="-2, -2" data-current="false" data-visited="false" data-reach="false"></li>
+      <li class='hex' data-coordinates="-1, -2" data-current="false" data-visited="false" data-reach="false"></li>
+      <li class='hex' data-coordinates="0, -2" data-current="false" data-visited="false" data-reach="false"></li>
+    </ol>
+  </div>
+
+  {{!-- MEDIUM GRID --}}
+
+  {{!-- <div class="grid" id="grid-md">
+    <ol class="md-3">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="md-2">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="md-1">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="md-0">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="md-1">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="md-2">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="md-3">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+  </div> --}}
+
+  {{!-- LARGE GRID --}}
+
+  {{!-- <div class="grid" id="grid-lg">
+    <ol class="lg-4">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="lg-3">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="lg-2">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="lg-1">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="lg-0">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="lg-1">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="lg-2">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="lg-3">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+    <ol class="lg-4">
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+      <li class='hex'></li>
+    </ol>
+  </div> --}}
+
+</div>
+
+{{!-- FOOTER --}}
+
+<div class="footer">
+  <div class="footContainer">
+    <div class="footLeft">
+      <p id="health">HEALTH&nbsp;&nbsp;[ 20 ]</p>
+    </div>
+    <div class="footMid">
+      <p id="oxygen">OXYGEN&nbsp;&nbsp;[ 10 ]</p>
+    </div>
+    <div class="footRight">
+      <p id="fuel">FUEL&nbsp;&nbsp;[ 0 ]</p>
+    </div>
+  </div>
+</div>
