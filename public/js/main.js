@@ -1,11 +1,9 @@
-// //on click to new game page
-//     $('#newGame').on('click', function(){
-//         $.get("newgame", function(req, res){
-//             res.render("newgame", {
-//                 msg: "New Game Page!"
-//             });
-//         });
-//     });
+//on click to new game page
+    $('#newGame').on('click', function(){
+        event.preventDefault();
+        console.log('this');
+        location.href = '/newgame';
+    });
 // //On Click to continue game page
 //     $('#conGame').on('click', function(){
 //         $.get("congame", function(req, res){
