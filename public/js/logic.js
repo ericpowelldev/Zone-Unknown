@@ -8,8 +8,8 @@ let obj = {
     hasWaterFilter: false,
     hasO2Scrubber: false,
     warpCount: 0,
-    health: 20,
-    oxygen: 10,
+    health: 12,
+    oxygen: 12,
     fuel: 0,
     planet: 1,
     planet1: [
@@ -636,10 +636,10 @@ function generatePlanet1() {
     let numArray = [];
 
     // Setting default random event counts for this specific planet
-    psHPCount = 5;
-    nsHPCount = 4;
-    psO2Count = 5;
-    nsO2Count = 4;
+    psHPCount = 6;
+    nsHPCount = 3;
+    psO2Count = 6;
+    nsO2Count = 3;
 
     // Loop to generate random events for each hex
     for (let i = 0; i < obj.planet1.length; i++) {
@@ -719,10 +719,10 @@ function generatePlanet2() {
     let numArray = [];
 
     // Setting default random event counts for this specific planet
-    psHPCount = 9;
-    nsHPCount = 9;
-    psO2Count = 9;
-    nsO2Count = 9;
+    psHPCount = 10;
+    nsHPCount = 8;
+    psO2Count = 10;
+    nsO2Count = 8;
 
     // Loop to generate random events for each hex
     for (let i = 0; i < obj.planet2.length; i++) {
@@ -802,10 +802,10 @@ function generatePlanet3() {
     let numArray = [];
 
     // Setting default random event counts for this specific planet
-    psHPCount = 14;
-    nsHPCount = 16;
-    psO2Count = 14;
-    nsO2Count = 16;
+    psHPCount = 15;
+    nsHPCount = 15;
+    psO2Count = 15;
+    nsO2Count = 15;
 
     // Loop to generate random events for each hex
     for (let i = 0; i < obj.planet3.length; i++) {
@@ -987,7 +987,7 @@ function getEvent(hexEvent) {
         $(`#mb1`).text("Continue");
         $(`#but2`).hide();
         $(`#but3`).hide();
-        obj.oxygen += 2;
+        obj.oxygen += 3;
     }
     else if (hexEvent === "nsO2") {
         $(`#modalDrop`).show();
@@ -1134,6 +1134,7 @@ function gridChange() {
             console.log(`No change was made for this hex...`);
         }
     });
+    statusCheck();
 }
 
 function gameAction() {
@@ -1152,7 +1153,7 @@ function gameAction() {
     }
     else if (butText === "Save and advance to next planet") {
         if (obj.warpCount > obj.planet - 1) {
-        obj.oxygen = 10;
+        obj.oxygen = 12;
         localStorage.setItem('save', JSON.stringify(obj));
         $("#modalDrop").hide();
         obj.planet++;
