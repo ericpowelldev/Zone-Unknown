@@ -622,9 +622,6 @@ let obj = {
 
 
 function generatePlanets() {
-<<<<<<< Updated upstream
-    
-=======
     generatePlanet1();
 }
 
@@ -933,7 +930,6 @@ function generatePlanet3() {
 
     // Save the planets
     localStorage.setItem('save', JSON.stringify(obj));
->>>>>>> Stashed changes
 }
 
 
@@ -971,10 +967,6 @@ function newGame() {
     else {
         alert("Please enter a username between 3 & 25 characters!");
     }
-<<<<<<< Updated upstream
-    
-=======
->>>>>>> Stashed changes
 }
 
 $(document).on("click", "#continue", continueGame);
@@ -1200,6 +1192,20 @@ function openSocket() {
 
 function closeSocket() {
     document.getElementById("myNav").style.height = "0%";
+}
+
+//////////////////////////////////////////////// STATUS MODAL ////////////////////////////////////////
+
+//opens status modal
+
+function openStatus() {
+    document.getElementById("myMenu").style.height = "100%";
+}
+
+//closes modal for status
+
+function closeStatus() {
+    document.getElementById("myMenu").style.height = "0%";
 }
 
 
