@@ -1151,7 +1151,7 @@ function gameAction() {
         }
     }
     else if (butText === "Save and advance to next planet") {
-        if (obj.warpCount >= obj.planet - 1) {
+        if (obj.warpCount > obj.planet - 1) {
         obj.oxygen = 10;
         localStorage.setItem('save', JSON.stringify(obj));
         $("#modalDrop").hide();
