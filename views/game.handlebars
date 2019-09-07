@@ -40,7 +40,27 @@
       <img id="home" src="images/zu_head_white.png">
     </div>
     <div class="navRight">
-      <p id="menu">MENU</p>
+      <div id="myMenu" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeStatus()">&times;</a>
+        <div class="overlay-content">
+          
+          {{!-- MENU MODAL CRAP GOES HERE --}}
+          <div id="statusCon">
+          <span class="statusMod">OXYGEN: 0</span><BR><BR>
+          <span class="statusMod">HEALTH: 0</span><BR><BR>
+          <span class="statusMod">FUEL: 0</span><BR><BR>
+          <span class="statusMod">BIOSCANNER: 0</span>
+          <span class="statusMod">GEOMAPPER: 0</span><BR><BR>
+          <span class="statusMod">LAZER: 0</span>
+          <span class="statusMod">JETPACK: 0</span><BR><BR>
+          <span class="statusMod">WATERFILTER: 0</span>
+          <span class="statusMod">02SCRUBBER: 0</span><BR><BR>
+          <span class="statusMod">WARP PIECES: 0</span><BR><BR>
+          <span class="statusMod">WHICH PLANET: 0</span>
+          </div>
+        </div>
+      </div>
+      <p id="menu" onclick="openStatus()">MENU</p>
     </div>
   </div>
 </div>

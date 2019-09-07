@@ -557,3 +557,14 @@ ol.lg-4 {
     right: 35px;
     }
   }
+
+  /* STATUS MODAL */
+
+  #statusCon{
+      margin-top: 60px;
+  }
+
+  .statusMod{
+      padding: 10px;
+      color: #0080ff;
+  }
