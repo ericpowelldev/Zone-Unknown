@@ -623,7 +623,7 @@ let obj = {
 
 
 function generatePlanets() {
-
+    
 }
 
 
@@ -687,7 +687,7 @@ function newGame() {
     else {
         alert("Please enter a username between 3 & 25 characters!");
     }
-
+    
 }
 
 $(document).on("click", "#continue", continueGame);
@@ -696,7 +696,6 @@ $(document).on("click", "#newGame", newGame);
 
 
 //////////////////////////////   GAME PAGE FUNCTIONS   //////////////////////////////
-
 
 let chatUser = "";
 chatUser = localStorage.getItem('username');
@@ -708,7 +707,6 @@ function start() {
     showPlanet();
     gridChange();
     getMessages();
-    onRowAdded();
 }
 
 // Function to load a previously saved game
@@ -830,6 +828,7 @@ $(document).ready(function () {
     else {
         console.log(`PATHNAME: ` + window.location.pathname);
     }
+
 });
 $(document).on("click", "#home", goHome);
 $(document).on("click", ".hex", gridMove);
@@ -855,9 +854,9 @@ function getMessages() {
             for (var i = 0; i < messages.length; i++) {
                 var final_message = $("<p />").text(messages[i].message);
                 $("#history").append(final_message);
-                onRowAdded();
             }
         }
+        onRowAdded();
     });
 }
 
@@ -907,8 +906,8 @@ function submitMessage(newMessage) {
 };
 
 //scrolling function
-onRowAdded = function() {
-    $('#history').animate({scrollTop: $('#history').prop('scrollHeight')});
+onRowAdded = function () {
+    $('#history').animate({ scrollTop: $('#history').prop('scrollHeight') });
 };
 
 ///opens modal for chat
