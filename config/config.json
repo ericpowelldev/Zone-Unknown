@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Azazel0315",
+    "password": "password",
     "database": "zu_db",
     "host": "localhost",
     "port": 3306,
