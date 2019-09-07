@@ -936,6 +936,7 @@ function start() {
 function loadSavedGame() {
     obj = JSON.parse(localStorage.getItem('save'));
     console.log(obj);
+    statusCheck();
 }
 
 function hideHTML() {
@@ -1139,13 +1140,18 @@ function gameAction() {
     let butText = $(this).children().text();
     console.log(butText);
     if (butText === "Save and replenish O2") {
-        obj.oxygen += 6 ;
-        obj.fuel--;
-        localStorage.setItem('save', JSON.stringify(obj));
-        $("#modalDrop").hide();
+        if (obj.fuel > 0) {
+            obj.oxygen += 8;
+            obj.fuel--;
+            localStorage.setItem('save', JSON.stringify(obj));
+            $("#modalDrop").hide();
+        }
+        else {
+            alert(`You need at least 1 fuel to replenish your oxygen`); 
+        }
     }
     else if (butText === "Save and advance to next planet") {
-        if (obj.warp > obj.planet - 1) {
+        if (obj.warpCount >= obj.planet - 1) {
         obj.oxygen = 10;
         localStorage.setItem('save', JSON.stringify(obj));
         $("#modalDrop").hide();
@@ -1158,8 +1164,9 @@ function gameAction() {
     }
     else if (butText === "Continue") {
         $("#modalDrop").hide();
-        winLose();
     }
+    winLose();
+    statusCheck();
 }
 
 function winLose() {
@@ -1171,6 +1178,17 @@ function winLose() {
         alert("You have survived! Congratulations on getting back home!");
         location.href = "/";
     }
+}
+
+function statusCheck() {
+    $(`#health`).text(`HEALTH  [ ${obj.health} ]`);
+    $(`#oxygen`).text(`OXYGEN  [ ${obj.oxygen} ]`);
+    $(`#fuel`).text(`FUEL  [ ${obj.fuel} ]`);
+    $(`#statHealth`).text(`HEALTH  [ ${obj.health} ]`);
+    $(`#statOxygen`).text(`OXYGEN  [ ${obj.oxygen} ]`);
+    $(`#statFuel`).text(`FUEL  [ ${obj.fuel} ]`);
+    $(`#statWarp`).text(`WARP PIECES  [ ${obj.warpCount} ]`);
+    $(`#statPlanet`).text(`CURRENT PLANET  [ ${obj.planet} ]`);
 }
 
 $(document).ready(function () {
