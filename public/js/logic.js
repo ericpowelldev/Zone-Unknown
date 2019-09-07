@@ -1,6 +1,4 @@
 //////////////////////////////   LOCAL STORAGE USER OBJECT   //////////////////////////////
-let evn = require("/events.js");
-
 
 let obj = {
     hasBioScanner: false,
@@ -658,11 +656,6 @@ function generatePlanet1() {
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
                 nsHPCount--;
             }
-            else if (rdmEvent === `dHP` && dHPCount > 0) {
-                obj.planet1[i].event = rdmEvent;
-                console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
-                dHPCount--;
-            }
             else if (rdmEvent === `psO2` && psO2Count > 0) {
                 obj.planet1[i].event = rdmEvent;
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
@@ -672,11 +665,6 @@ function generatePlanet1() {
                 obj.planet1[i].event = rdmEvent;
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
                 nsO2Count--;
-            }
-            else if (rdmEvent === `dO2` && dO2Count > 0) {
-                obj.planet1[i].event = rdmEvent;
-                console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
-                dO2Count--;
             }
             else {
                 i--;
@@ -751,11 +739,6 @@ function generatePlanet2() {
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
                 nsHPCount--;
             }
-            else if (rdmEvent === `dHP` && dHPCount > 0) {
-                obj.planet2[i].event = rdmEvent;
-                console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
-                dHPCount--;
-            }
             else if (rdmEvent === `psO2` && psO2Count > 0) {
                 obj.planet2[i].event = rdmEvent;
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
@@ -765,11 +748,6 @@ function generatePlanet2() {
                 obj.planet2[i].event = rdmEvent;
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
                 nsO2Count--;
-            }
-            else if (rdmEvent === `dO2` && dO2Count > 0) {
-                obj.planet2[i].event = rdmEvent;
-                console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
-                dO2Count--;
             }
             else {
                 i--;
@@ -844,11 +822,6 @@ function generatePlanet3() {
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
                 nsHPCount--;
             }
-            else if (rdmEvent === `dHP` && dHPCount > 0) {
-                obj.planet3[i].event = rdmEvent;
-                console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
-                dHPCount--;
-            }
             else if (rdmEvent === `psO2` && psO2Count > 0) {
                 obj.planet3[i].event = rdmEvent;
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
@@ -858,11 +831,6 @@ function generatePlanet3() {
                 obj.planet3[i].event = rdmEvent;
                 console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
                 nsO2Count--;
-            }
-            else if (rdmEvent === `dO2` && dO2Count > 0) {
-                obj.planet3[i].event = rdmEvent;
-                console.log(`RANDOM EVENT ADDED "${rdmEvent}" to HEX${i}`);
-                dO2Count--;
             }
             else {
                 i--;
@@ -998,61 +966,62 @@ function goHome() {
 function getEvent(hexEvent) {
     if (hexEvent === "psHP") {
         $(`#modalDrop`).show();
-        $(`#modalContainer p`).append(evn.psHpEvents[rdmInt(0, evn.psHpEvents.length)].event);
-        $(`#mb1`).append("Continue");
+        $(`#modalContainer p`).text(psHpEvents[rdmInt(0, psHpEvents.length - 1)].event);
+        $(`#mb1`).text("Continue");
         $(`#but2`).hide();
         $(`#but3`).hide();
         obj.health += 2;
     }
     else if (hexEvent === "nsHP") {
         $(`#modalDrop`).show();
-        $(`#modalContainer p`).append(evn.nsHpEvents[rdmInt(0, evn.nsHpEvents.length)].event);
-        $(`#mb1`).append("Continue");
+        $(`#modalContainer p`).text(nsHpEvents[rdmInt(0, nsHpEvents.length - 1)].event);
+        $(`#mb1`).text("Continue");
         $(`#but2`).hide();
         $(`#but3`).hide();
         obj.health -= 4;
     }
     else if (hexEvent === "psO2") {
         $(`#modalDrop`).show();
-        $(`#modalContainer p`).append(evn.psO2Events[rdmInt(0, evn.psO2Events.length)].event);
-        $(`#mb1`).append("Continue");
+        $(`#modalContainer p`).text(psO2Events[rdmInt(0, psO2Events.length - 1)].event);
+        $(`#mb1`).text("Continue");
         $(`#but2`).hide();
         $(`#but3`).hide();
         obj.oxygen += 2;
     }
     else if (hexEvent === "nsO2") {
         $(`#modalDrop`).show();
-        $(`#modalContainer p`).append(evn.nsO2Events[rdmInt(0, evn.nsO2Events.length)].event);
-        $(`#mb1`).append("Continue");
+        $(`#modalContainer p`).text(nsO2Events[rdmInt(0, nsO2Events.length - 1)].event);
+        $(`#mb1`).text("Continue");
         $(`#but2`).hide();
         $(`#but3`).hide();
         obj.oxygen -= 4;
     }
     else if (hexEvent === "ship") {
         $(`#modalDrop`).show();
-        $(`#modalContainer p`).append("You're back at your ship, what would you like to do now?");
-        $(`#mb1`).append("Save and Re-fuel");
-        $(`#mb2`).append("Save and take off for another planet");
-        $(`#mb3`).append("Continue");
-        obj.fuel += 3;
+        $(`#but2`).show();
+        $(`#but3`).show();
+        $(`#modalContainer p`).text("You're back at your ship, what would you like to do now?");
+        $(`#mb1`).text("Save and replenish O2");
+        $(`#mb2`).text("Save and advance to next planet");
+        $(`#mb3`).text("Continue");
     }
     else if (hexEvent === "fuel") {
         $(`#modalDrop`).show();
-        $(`#modalContainer p`).append(evn.psFuelEvents[rdmInt(0, evn.psFuelEvents.length)].event);
-        $(`#mb1`).append("Continue");
+        $(`#modalContainer p`).text(psFuelEvents[rdmInt(0, psFuelEvents.length - 1)].event);
+        $(`#mb1`).text("Continue");
         $(`#but2`).hide();
         $(`#but3`).hide();
-        obj.fuel += 3;
+        obj.fuel += 1;
     }
     else if (hexEvent === "warp") {
         $(`#modalDrop`).show();
-        $(`#modalContainer p`).append(evn.warpDriveEvents[obj.warpCount].event);
-        $(`#mb1`).append("Continue");
+        $(`#modalContainer p`).text(warpDriveEvents[obj.warpCount].event);
+        $(`#mb1`).text("Continue");
         $(`#but2`).hide();
         $(`#but3`).hide();
         obj.warpCount++;
     }
-    
+
 }
 
 function gridMove() {
@@ -1066,11 +1035,46 @@ function gridMove() {
         myX = parseInt(coordinates[0]);
         myY = parseInt(coordinates[1]);
 
-        if (planet === 1) {
-            for (let i = 0; i < planet1.length; i++) {
-                if (planet1[i].hexXY === coords) {
-                    planet1[i].visited = true;
-                    getEvent(planet1[i].event);
+        if (coords === "0, 0") {
+            getEvent("ship");
+        }
+
+        if (obj.planet === 1) {
+            for (let i = 0; i < obj.planet1.length; i++) {
+                if (obj.planet1[i].hexXY[0] + ", " + obj.planet1[i].hexXY[1] === coords) {
+                    obj.oxygen -= 1;
+                    if (obj.planet1[i].visited === true) {
+                    }
+                    else {
+                        obj.planet1[i].visited = true;
+                        getEvent(obj.planet1[i].event);
+                    }
+                }
+            }
+        }
+        else if (obj.planet === 2) {
+            for (let i = 0; i < obj.planet2.length; i++) {
+                if (obj.planet2[i].hexXY[0] + ", " + obj.planet2[i].hexXY[1] === coords) {
+                    obj.oxygen -= 1;
+                    if (obj.planet2[i].visited === true) {
+                    }
+                    else {
+                        obj.planet2[i].visited = true;
+                        getEvent(obj.planet2[i].event);
+                    }
+                }
+            }
+        }
+        else if (obj.planet === 3) {
+            for (let i = 0; i < obj.planet3.length; i++) {
+                if (obj.planet3[i].hexXY[0] + ", " + obj.planet3[i].hexXY[1] === coords) {
+                    obj.oxygen -= 1;
+                    if (obj.planet3[i].visited === true) {
+                    }
+                    else {
+                        obj.planet3[i].visited = true;
+                        getEvent(obj.planet3[i].event);
+                    }
                 }
             }
         }
@@ -1131,6 +1135,43 @@ function gridChange() {
     });
 }
 
+function gameAction() {
+    let butText = $(this).children().text();
+    console.log(butText);
+    if (butText === "Save and replenish O2") {
+        obj.oxygen += 6 ;
+        obj.fuel--;
+        localStorage.setItem('save', JSON.stringify(obj));
+        $("#modalDrop").hide();
+    }
+    else if (butText === "Save and advance to next planet") {
+        if (obj.warp > obj.planet - 1) {
+        obj.oxygen = 10;
+        localStorage.setItem('save', JSON.stringify(obj));
+        $("#modalDrop").hide();
+        obj.planet++;
+        showPlanet();
+        }
+        else {
+            alert("You must have the warp piece to continue to the next planet")
+        }
+    }
+    else if (butText === "Continue") {
+        $("#modalDrop").hide();
+        winLose();
+    }
+}
+
+function winLose() {
+    if (obj.oxygen <= 0 || obj.health <= 0) {
+        alert("You have died!");
+        location.href = "/";
+    }
+    if (obj.warpCount >= 4) {
+        alert("You have survived! Congratulations on getting back home!");
+        location.href = "/";
+    }
+}
 
 $(document).ready(function () {
     // console.log(`HREF: ` + window.location.href);
@@ -1256,146 +1297,350 @@ function closeStatus() {
 
 
 
-//////////////////////////////   UNUSED FUNCTIONS (FOR REFERENCE)   //////////////////////////////
+//Events
+let psHpEvents = [
+    {
+        event: "You discover a bush filled with bean pods, you've seen these before and know they are healthy (Gain HP)."
+    },
+    {
+        event: "You happen upon a small lake. The water clearly doesn't look safe to drink. You continue on.",
+        eventWaterFilter: "You happen upon a small lake. Your Water-Filter should be able to make this drinkable (Gain HP)."
+    },
+    {
+        event: "You find a stream of crystal clear water that emits a golden glow. You drink and feel instantly restored (Gain HP)."
+    },
+    {
+        event: "Searching an abandoned vehicle you find a first aid kit (Gain HP)."
+    },
+    {
+        event: "You discover a thick patch of berries and gorge yourself (Gain HP)."
+    },
+    {
+        event: "You roll over a rock and find some fat grubs, bottoms up (Gain HP)."
+    },
+    {
+        event: "You identify a medicinal plant you learned about in the academy (Gain HP)."
+    },
+    {
+        event: "You come across an old outpost, and find medical supplies inside (Gain HP)."
+    },
+    {
+        event: "You see an abandoned outpost on a high rocky cliff, but you can't find any way up and have to keep moving.",
+        eventJetpack: "You see an abandoned outpost on a high rocky cliff. Time to fly (Gain HP)."
+    },
+    {
+        event: "You watch a predator chase down and kill a large game animal. If only you had a way to scare off the predator.",
+        eventLazer: "You watch a predator chase down and kill a large game animal. You whip out your lazer and scare the predator off to take it as your own (Gain HP)."
+    }
+];
 
+let nsHpEvents = [
+    {
+        event: "You stumble upon a hive of viscious space bees, they sting you through your space suit somehow (Lose HP).",
+        eventLazer: "You stumble upon a hive of viscious space bees, luckly you have a lazer (Lose a small amount of HP)."
+    },
+    {
+        event: "You are ambushed by space pirates who demand tribute to let you pass (Lose HP).",
+        eventLazer: "You are ambushed by space pirates who demand tribute, but they are no match for the trusty lazer at your side. You fight your way through (Lose a small amount of HP)."
+    },
+    {
+        event: "You meet a very large and very unfriendly alien creature (Lose HP)."
+    },
+    {
+        event: "You fall through a crack in the volcanic rock and twist your ankle (Lose HP)."
+    },
+    {
+        event: "A swarm of leathery-winged death bats attack you as you approach the mouth of a cave (Lose HP)."
+    },
+    {
+        event: "Quicksand! You're lucky to escape with your life (Lose HP).",
+        eventGeoMapper: "Look out, quicksand ahead! The Geo-Mapper guides you safely around it (Continue on)."
+    },
+    {
+        event: "The planet starts to shake violently, hurling you to the ground (Lose HP)."
+    },
+    {
+        event: "A gentle rain begins to fall. You are just about to try and collect some when you notice it is starting to eat through your suit and run for cover (Lose HP)."
+    },
+    {
+        event: "You are entranced by an incredible shifting light show in the atmosphere. It is truly a beautiful sight to behold; too bad it's also blasting you with cosmic radiation (Lose HP)."
+    },
+    {
+        event: "A deep rumble emanates from beneath you. You've seen this movie before, and manage to get mostly out of the way of the giant worm that erupts from the ground (Lose HP)."
+    }
+];
 
+let dHpEvents = [
+    {
+        event: "You discover a tree with a strange alluring fruit. You aren't sure if it is healthy or harmful.",
+        eventBioScannerA: "You discover a tree with a strange alluring fruit. Your scanner tells you the fruit is healthy (Gain HP).",
+        eventBioScannerB: "You discover a tree with a strange alluring fruit. Your scanner tells you the fruit is harmful (Continue on).",
+        choiceA: "Eat the fruit.",
+        choiceB: "Continue on.",
+        outcomeA1: "The fruit satisfies your hunger (Gain HP).",
+        outcomeA2: "The fruit gave you the runs (Lose HP).",
+        outcomeB1: "You avoid the berries."
+    },
+    {
+        event: "An enormous sandstorm appears in the distance.",
+        choiceA: "Hunker down and wait out the storm.",
+        choiceB: "Push yourself harder to beat the storm.",
+        outcomeA1: "You use additional oxygen (Lose O2).",
+        outcomeB1: "You expend a lot of energy racing the storm (Lose HP)."
+    },
+    {
+        event: "The natural hot springs of this planet are reported to have restorative properties.",
+        choiceA: "Take a little 'Me time'.",
+        choiceB: "Continue your search.",
+        outcomeA1: "You feel fantastic (Gain HP).",
+        outcomeB1: "You avoid the hot springs, who knows what's growing in there."
+    },
+    {
+        event: "You come to a fork in the path.",
+        choiceA: "Go left.",
+        choiceB: "Go right.",
+        outcomeA1: "You find more berries (Gain HP).",
+        outcomeB1: "The land is bare and you move on."
+    },
+    {
+        event: "You see a small creature caught in a snare.",
+        choiceA: "Take it and run.",
+        choiceB: "Leave it and continue on.",
+        outcomeA1: "You needed that meal badly (Gain HP).",
+        outcomeB1: "Your stomach growls, but you feel better safe than sorry."
+    },
+    {
+        event: "You see a small creature caught in a snare.",
+        choiceA: "Take it and run.",
+        choiceB: "Leave it and continue on.",
+        outcomeA1: "You're attacked before you get it released, and barely escape with your life (Lose HP).",
+        outcomeB1: "Your stomach growls, but you feel better safe than sorry."
+    },
+    {
+        event: "There is a strange cloud floating a few feet off the ground ahead of you. It seems to be faintly glowing and pulsating, and gives you an odd sense of comfort.",
+        choiceA: "Get a better look.",
+        choiceB: "Get out of there now.",
+        outcomeA1: "You feel a brief sense of euphoria before the pain kicks in (Lose HP).",
+        outcomeB1: "You really want to go check out that cloud, but you would rather make it home safely."
+    },
+    {
+        event: "You kick over some rocks and notice a corner of old paper sticking out. It appears to be a crudely drawn map with an X seemingly a short distance away.",
+        choiceA: "You know there are space pirates in these parts, maybe they have something you need.",
+        choiceB: "You know there are space pirates in these parts, better put the map back and steer clear",
+        outcomeA1: "You found rations and rum (Gain HP).",
+        outcomeB1: "You trudge onward, dreaming of pirate treasure."
+    },
+    {
+        event: "You kick over some rocks and notice a corner of old paper sticking out. It appears to be a crudely drawn map with an X seemingly a short distance away.",
+        choiceA: "You know there are space pirates in these parts, maybe they have something you need.",
+        choiceB: "You know there are space pirates in these parts, better put the map back and steer clear",
+        outcomeA1: "As you're digging you hear the rumble of an approching speeder and flee as fast as you can (Lose HP).",
+        outcomeB1: "You trudge onward, dreaming of pirate treasure."
+    },
+    {
+        event: "It's probably time for a quick rest before you pass out from exhaustion",
+        choiceA: "Keep going, you have to keep going.",
+        choiceB: "Find a cozy looking rock and snuggle up.",
+        outcomeA1: "You wake up with a busted knee and blood in your mouth, you did pass out (Lose HP).",
+        outcomeB1: "You wake up feeling a little better, but that rock was not kind to your neck."
+    },
+];
 
-// // GET Request to obtain every user in the database
-// function getAllUsers() {
-//     $.get("/api/users", function (data) { console.log(data); });
-// }
+let psO2Events = [
+    {
+        event: "You find a corpse with an O2 tank on them. You figure they won't be using it anytime soon so you take it (Gain O2)."
+    },
+    {
+        event: "You find a crashed drop pod with extra O2 tanks in it (Gain O2)."
+    },
+    {
+        event: "You find a crashed land speeder with O2 tanks still attached (Gain O2)."
+    },
+    {
+        event: "You come across a vent of gas coming from the shore of a large lake, but you have no way to ensure it is safe.",
+        eventO2Scanner: "You come across a vent of gas coming from the shore of a large lake. You use your O2-Scrubber to fill a small reserve tank (Gain O2)."
+    },
+    {
+        event: "You come across a downed ship, which has just enough power in the life support sytem to replenish some of your oxygen (Gain O2)."
+    },
+    {
+        event: "You see a hidden door in the side of a cliff face. It seems no one has been here for years, but you did find an oxygen tank (Gain O2)."
+    },
+    {
+        event: "You see a lone space pirate with an O2 tank, but it's too risky to take him on.",
+        eventLazer: "You see a lone space pirate with an O2 tank, you decide it's time to rob the robbers (Gain O2)."
+    },
+    {
+        event: "You come upon a thick fog you think might be mostly O2, but you have no way to ensure it is safe.",
+        eventO2Scanner: "You come upon a thick fog you think might be mostly O2. You use your O2-Scrubber to fill a small reserve tank (Gain O2)."
+    },
+    {
+        event: "You see an abandoned outpost on a high rocky cliff, but you can't find any way up and have to keep moving.",
+        eventJetpack: "You see an abandoned outpost on a high rocky cliff. Time to fly (Gain O2)."
+    },
+    {
+        event: "You decide to take a break and focus on slowing your breathing, preserving extra O2 (Gain O2)."
+    }
+];
+let nsO2Events = [
+    {
+        event: "You come across a forest. You're not sure how to navigate through, so it will take you a bit of extra time (Lose O2).",
+        eventGeoMapper: "You come across a jungle. The Geo-Mapper guides you through & you get out in no time (Continue on)."
+    },
+    {
+        event: "While trudging through the jungle your oxygen tank gets snagged on a branch and starts leaking (Lose O2)."
+    },
+    {
+        event: "A robot challenges you to a knife fight. You dispatch him quickly, but he managed to knick your oxygen line (Lose O2)."
+    },
+    {
+        event: "While collecting samples of the local flora you accidentally snip your oxygen line (Lose O2)."
+    },
+    {
+        event: "You find yourself mired in a deep, dense bog from which it takes a significant time to free yourself (Lose O2).",
+        eventJetpack: "You jet above the danger and continue on."
+    },
+    {
+        event: "The biggest creature you have ever seen is lumbering towards you from the distance. You run as fast and as far as you can before stopping to catch your breath (Lose O2)."
+    },
+    {
+        event: "You get caught in an anti-gravity trap, and the only way to free yourself is by releasing small blasts of O2 from your tank to propel you forward (Lose O2)."
+    },
+    {
+        event: "You stumble and knock the wind out of yourself. You are unharmed, but your deep gasping has sapped extra O2 (Lose O2)."
+    },
+    {
+        event: "You find yourself in a labyrinth of caves and tunnels. You're not sure how to navigate through, so it will take you a bit of extra time (Lose O2).",
+        eventGeoMapper: "You find yourself in a labyrinth of caves and tunnels. The Geo-Mapper guides you through & you get out in no time (Continue on)."
+    },
+    {
+        event: "Your starting to lose hope, so to combat this you decide to do some quick yoga. You know this exertion will be a strain on your oxygen but think it will be worth it (Lose O2)."
+    }
+];
 
-// // GET Request to obtain user data based on username
-// function getUser(username) {
+let dO2Events = [
+    {
+        event: "You find a crashed pod. You notice there is an O2 tank bolted to the wall. You can use what you have to pry it, but you may damage it.",
+        choiceA: "Try to pry the O2 tank.",
+        choiceB: "Continue on.",
+        outcomeA1: "You successfully pry the O2 tank without damaging it (Gain O2).",
+        outcomeA2: "You detatch the O2 tank from the wall, but it falls to the ground and cracks. You wasted your time here (Lose O2).",
+        outcomeB1: "You avoid the crashed pod."
+    },
+    {
+        event: "An enormous sandstorm appears in the distance.",
+        choiceA: "Hunker down and wait out the storm.",
+        choiceB: "Push yourself harder to beat the storm.",
+        outcomeA1: "You use additional oxygen (Lose O2).",
+        outcomeB1: "You expend a lot of energy racing the storm (Lose HP)."
+    },
+    {
+        event: "You hear a beautiful song coming from what appears to be a clearing in the forest.",
+        choiceA: "You are drawn to follow the song, and believe it's creator can probably help you.",
+        choiceB: "You've got better things to do than listen to music.",
+        outcomeA1: "Oh no, it’s a giant man-eating Siren Plant! It's tendrils squeeze tight, forcing you to shed and O2 tank to escape (Lose O2).",
+        outcomeB1: "You continue on your journey."
+    },
+    {
+        event: "A polar vortex blasts you with icy wind as you exit a cave. Should you risk it?",
+        choiceA: "Cozy up and wait out the storm.",
+        choiceB: "Brave the storm, moving will keep you warmer anyway.",
+        outcomeA1: "You use additional oxygen (Lose some O2).",
+        outcomeB1: "Icy shards tear at your suit and O2 tank (Lose double O2)."
+    },
+    {
+        event: "You find an unusual looking air canister. You aren't sure if it is O2 or something else.",
+        eventO2ScrubberA: "You find an unusual looking air canister. You use your O2 Scrubber on it, and get a reserve tank (Gain O2).",
+        eventO2ScrubberB: "You find an unusual looking air canister. You use your O2 Scrubber on it, but there was no O2 in the canister.",
+        choiceA: "You're desperate, you've got to take a chance.",
+        choiceB: "Continue on.",
+        outcomeA1: "The canister has O2! (Gain O2).",
+        outcomeA2: "It smells like farts, and sure isn't O2 (Lose O2).",
+        outcomeB1: "You leave the canister behind."
+    },
+    {
+        event: "You see a crashed escape pod stuck in the canopy of the forest",
+        eventJetpackA: "You see a crashed escape pod stuck in the canopy of the forest. You quickly jet up to it and strip the O2 tanks (Gain O2).",
+        choiceA: "Find a way to climb to the top.",
+        choiceB: "It's not worth the risk, continue on.",
+        outcomeA1: "You find a relatively easy tree to climb and enter the pod. It has a spare O2 tank that is still serviceable (Gain O2).",
+        outcomeA2: "You spend hours trying to traverse the trees, wasting oxygen due to the exertion (Lose O2)",
+        outcomeB1: "You continue on your journey."
+    },
+    {
+        event: "You kick over some rocks and notice a corner of old paper sticking out. It appears to be a crudely drawn map with an X seemingly a short distance away.",
+        choiceA: "You know there are space pirates in these parts, maybe they have something you need.",
+        choiceB: "You know there are space pirates in these parts, better put the map back and steer clear",
+        outcomeA1: "You found an O2 tank (Gain O2).",
+        outcomeB1: "You trudge onward, dreaming of pirate treasure."
+    }
+];
 
-//     // The standard way of using the GET method
-//     $.ajax({
-//         method: "GET",
-//         url: "/api/users/" + username
-//     }).then(function (data) {
-//         console.log(data); // Logs the response from the api (The requested user object is here)
-//     });
+let psFuelEvents = [
+    {
+        event: "You come across a makeshift mineshaft, and are able to scrounge some fuel from the left behind equipment (Gain fuel)."
+    },
+    {
+        event: "You trip over something in the brush. Upon clearing the debris you discover a damaged alien  shuttle with some fuel you can use (Gain fuel)."
+    },
+    {
+        event: "You find a fuel tank and siphon off as much as you can (Gain fuel)."
+    },
+    {
+        event: "You find an old spaceship fueling station, and a small amount of fuel still around (Gain fuel)."
+    },
+    {
+        event: "You see an abandoned outpost on a high rocky cliff, but you can't find any way up and have to keep moving.",
+        eventJetpack: "You see an abandoned outpost on a high rocky cliff. Time to fly (Gain Fuel)."
+    },
+    {
+        event: "You see a lone space pirate guarding his shuttle, but there is no way you can get to him without being noticed.",
+        eventLazer: "You see a lone space pirate guarding his shuttle, and hold him at Lazer-point for some of his fuel (Gain Fuel)."
+    }
+];
 
-//     // A different way of using the GET method
-//     // $.get("/api/users/" + username, function(data) {
-//     //     console.log(data);
-//     // });
-// }
+let itemEvents = [
+    {
+        event: "You found the Bio-Scanner! Now you can scan flora & fauna.",
+        item: "hasBioScanner"
+    },
+    {
+        event: "You found the Geo-Mapper! Now you can map the area & move quickly.",
+        item: "hasGeoMapper"
+    },
+    {
+        event: "You found the Lazer! Now you can defend yourself in battle.",
+        item: "hasLazer"
+    },
+    {
+        event: "You found the Jetpack! Now you can fly like an eagle, to the sea!",
+        item: "hasJetpack"
+    },
+    {
+        event: "You found the Water-Filter! Now you can replenish your HP at water sources!",
+        item: "hasWaterFilter"
+    },
+    {
+        event: "You found the O2-Scrubber! Now you can extract oxygen!",
+        item: "hasO2Scrubber"
+    },
+];
 
-// // POST Request to create a new user using the default logic object
-// function createUser(userObject) {
-
-//     // The standard way of using the POST method
-//     $.ajax({
-//         method: "POST",
-//         url: "/api/users",
-//         data: userObject
-//     }).then(function (data) {
-//         console.log(data); // Logs userObject that was passed in
-//         location.href = `/game`;
-//     });
-
-//     // A different way of using the POST method
-//     // $.post("/api/users", userObject, function (data) {
-//     //     console.log(data);
-//     // });
-// }
-
-// // PUT Request to save/update the user's game with the current values from our logic object
-// function saveGame(userObject) {
-
-//     // The ONLY way of using the PUT method
-//     $.ajax({
-//         method: "PUT",
-//         url: "/api/users",
-//         data: userObject
-//     }).then(function () { // Does not log anything useful
-
-//     });
-// }
-
-// // DELETE Request to destroy user data based on username
-// function deleteUser(username) {
-
-//     // The ONLY way of using the DELETE method
-//     $.ajax({
-//         method: "DELETE",
-//         url: "/api/users/" + username
-//     }).then(function () { // Does not log anything useful
-
-//     });
-// }
-
-
-
-// function saveObj() {
-//     localStorage.setItem('save', JSON.stringify(obj)); // Save the data based on the obj variable and turn it into one large string
-// }
-// function loadObj() {
-//     obj = JSON.parse(localStorage.getItem('save')); // Replace the obj variable with the loaded values by parsing the large string
-// }
-// function loadStoreObj() {
-//     let newObj = JSON.parse(localStorage.getItem('save')); // Parse the string back into a new object
-// }
-// function deleteSave() {
-//     localStorage.clear(); // Delete all save data
-// }
-
-
-
-// // Continue button on home page
-// function continueGame() {
-//     obj.username = $(`#usernameInput`).val().trim().toLowerCase();
-//     localStorage.setItem('username', obj.username);
-
-//     // Check if username is valid
-//     if (obj.username.length > 2 && obj.username.length < 26) {
-//         // Check for existing username
-//         $.get("/api/users/" + obj.username, function (data) {
-//             // console.log(data);
-//             if (data) {
-//                 location.href = `/game`;
-//             }
-//             else {
-//                 alert("No save games found under this username!");
-//             }
-//         });
-//     }
-// }
-
-// // New Game button on home page
-// function newGame() {
-//     obj.username = $(`#usernameInput`).val().trim().toLowerCase();
-//     localStorage.setItem('username', obj.username);
-
-//     // Check if username is valid
-//     if (obj.username.length > 2 && obj.username.length < 26) {
-//         // Check for existing username
-//         $.get("/api/users/" + obj.username, function (data) {
-//             // console.log(data);
-//             if (data) {
-//                 // Overwrite old save data if username exists
-//                 $.ajax({
-//                     method: "PUT",
-//                     url: "/api/users",
-//                     data: obj
-//                 }).then(function () {
-//                     localStorage.clear();
-//                     localStorage.setItem('save', JSON.stringify(obj));
-//                     location.href = `/game`;
-//                 });
-//             }
-//             else {
-//                 // Create a new user and save if username doesn't exist
-//                 $.post("/api/users", obj, function (data) {
-//                     // console.log(data);
-//                     localStorage.setItem('save', JSON.stringify(obj));
-//                     location.href = `/game`;
-//                 });
-//             }
-//         });
-//     }
-//     else {
-//         alert("Please enter a username between 3 & 25 characters!");
-//     }
-// }
+let warpDriveEvents = [
+    {
+        event: "You found the first warp drive piece!",
+        count: 0
+    },
+    {
+        event: "You found the second warp drive piece!",
+        count: 1
+    },
+    {
+        event: "You found the third & final warp drive piece! Now look for some uranium to fuel it.",
+        count: 2
+    },
+    {
+        event: "You found uranium! Return to the ship to warp home!",
+        count: 3
+    }
+];
