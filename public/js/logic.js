@@ -1,5 +1,5 @@
 //////////////////////////////   LOCAL STORAGE USER OBJECT   //////////////////////////////
-
+let evn = require("/events.js");
 
 
 let obj = {
@@ -632,18 +632,16 @@ function rdmInt(min, max) {
 function generatePlanet1() {
 
     // Declaring variables we need to generate a planet
-    let psHPCount, nsHPCount, dHPCount, psO2Count, nsO2Count, dO2Count;
-    let fuelCount, itemCount, warpCount;
-    let eventArray = [`psHP`, `nsHP`, `dHP`, `psO2`, `nsO2`, `dO2`];
+    let psHPCount, nsHPCount, psO2Count, nsO2Count;
+    let fuelCount, warpCount;
+    let eventArray = [`psHP`, `nsHP`, `psO2`, `nsO2`];
     let numArray = [];
 
     // Setting default random event counts for this specific planet
-    psHPCount = 3;
-    nsHPCount = 3;
-    dHPCount = 3;
-    psO2Count = 3;
-    nsO2Count = 3;
-    dO2Count = 3;
+    psHPCount = 5;
+    nsHPCount = 4;
+    psO2Count = 5;
+    nsO2Count = 4;
 
     // Loop to generate random events for each hex
     for (let i = 0; i < obj.planet1.length; i++) {
@@ -692,11 +690,10 @@ function generatePlanet1() {
 
     // Setting default set event counts for this specific planet
     fuelCount = 3;
-    itemCount = 2;
     warpCount = 1;
 
     // Loop to generate random placements for the set events
-    for (let e = 0; e < (fuelCount + itemCount + warpCount); e++) {
+    for (let e = 0; e < (fuelCount + warpCount); e++) {
         let num = rdmInt(0, 18);
 
         if (num !== 4 && num !== 5 && num !== 8 && num !== 9 && num !== 10 && num !== 13 && num !== 14 && !numArray.includes(num)) {
@@ -714,11 +711,6 @@ function generatePlanet1() {
             console.log(`SET EVENT ADDED "fuel" to HEX${numArray[f]}`);
             fuelCount--;
         }
-        else if (itemCount > 0) {
-            obj.planet1[numArray[f]].event = `item`;
-            console.log(`SET EVENT ADDED "item" to HEX${numArray[f]}`);
-            itemCount--;
-        }
         else if (warpCount > 0) {
             obj.planet1[numArray[f]].event = `warp`;
             console.log(`SET EVENT ADDED "warp" to HEX${numArray[f]}`);
@@ -733,18 +725,16 @@ function generatePlanet1() {
 function generatePlanet2() {
 
     // Declaring variables we need to generate a planet
-    let psHPCount, nsHPCount, dHPCount, psO2Count, nsO2Count, dO2Count;
-    let fuelCount, itemCount, warpCount;
-    let eventArray = [`psHP`, `nsHP`, `dHP`, `psO2`, `nsO2`, `dO2`];
+    let psHPCount, nsHPCount, psO2Count, nsO2Count;
+    let fuelCount, warpCount;
+    let eventArray = [`psHP`, `nsHP`, `psO2`, `nsO2`];
     let numArray = [];
 
     // Setting default random event counts for this specific planet
-    psHPCount = 6;
-    nsHPCount = 6;
-    dHPCount = 6;
-    psO2Count = 6;
-    nsO2Count = 6;
-    dO2Count = 6;
+    psHPCount = 9;
+    nsHPCount = 9;
+    psO2Count = 9;
+    nsO2Count = 9;
 
     // Loop to generate random events for each hex
     for (let i = 0; i < obj.planet2.length; i++) {
@@ -793,11 +783,10 @@ function generatePlanet2() {
 
     // Setting default set event counts for this specific planet
     fuelCount = 6;
-    itemCount = 2;
     warpCount = 1;
 
     // Loop to generate random placements for the set events
-    for (let e = 0; e < (fuelCount + itemCount + warpCount); e++) {
+    for (let e = 0; e < (fuelCount + warpCount); e++) {
         let num = rdmInt(0, 36);
 
         if (num !== 11 && num !== 12 && num !== 17 && num !== 18 && num !== 19 && num !== 24 && num !== 25 && !numArray.includes(num)) {
@@ -815,11 +804,6 @@ function generatePlanet2() {
             console.log(`SET EVENT ADDED "fuel" to HEX${numArray[f]}`);
             fuelCount--;
         }
-        else if (itemCount > 0) {
-            obj.planet2[numArray[f]].event = `item`;
-            console.log(`SET EVENT ADDED "item" to HEX${numArray[f]}`);
-            itemCount--;
-        }
         else if (warpCount > 0) {
             obj.planet2[numArray[f]].event = `warp`;
             console.log(`SET EVENT ADDED "warp" to HEX${numArray[f]}`);
@@ -834,18 +818,16 @@ function generatePlanet2() {
 function generatePlanet3() {
 
     // Declaring variables we need to generate a planet
-    let psHPCount, nsHPCount, dHPCount, psO2Count, nsO2Count, dO2Count;
-    let fuelCount, itemCount, warpCount;
-    let eventArray = [`psHP`, `nsHP`, `dHP`, `psO2`, `nsO2`, `dO2`];
+    let psHPCount, nsHPCount, psO2Count, nsO2Count;
+    let fuelCount, warpCount;
+    let eventArray = [`psHP`, `nsHP`, `psO2`, `nsO2`];
     let numArray = [];
 
     // Setting default random event counts for this specific planet
-    psHPCount = 10;
-    nsHPCount = 10;
-    dHPCount = 10;
-    psO2Count = 10;
-    nsO2Count = 10;
-    dO2Count = 10;
+    psHPCount = 14;
+    nsHPCount = 16;
+    psO2Count = 14;
+    nsO2Count = 16;
 
     // Loop to generate random events for each hex
     for (let i = 0; i < obj.planet3.length; i++) {
@@ -894,11 +876,10 @@ function generatePlanet3() {
 
     // Setting default set event counts for this specific planet
     fuelCount = 10;
-    itemCount = 2;
     warpCount = 2;
 
     // Loop to generate random placements for the set events
-    for (let e = 0; e < (fuelCount + itemCount + warpCount); e++) {
+    for (let e = 0; e < (fuelCount + warpCount); e++) {
         let num = rdmInt(0, 60);
 
         if (num !== 21 && num !== 22 && num !== 29 && num !== 30 && num !== 31 && num !== 38 && num !== 39 && !numArray.includes(num)) {
@@ -915,11 +896,6 @@ function generatePlanet3() {
             obj.planet3[numArray[f]].event = `fuel`;
             console.log(`SET EVENT ADDED "fuel" to HEX${numArray[f]}`);
             fuelCount--;
-        }
-        else if (itemCount > 0) {
-            obj.planet3[numArray[f]].event = `item`;
-            console.log(`SET EVENT ADDED "item" to HEX${numArray[f]}`);
-            itemCount--;
         }
         else if (warpCount > 0) {
             obj.planet3[numArray[f]].event = `warp`;
@@ -1019,16 +995,85 @@ function showPlanet() {
 function goHome() {
     location.href = `/`;
 }
+function getEvent(hexEvent) {
+    if (hexEvent === "psHP") {
+        $(`#modalDrop`).show();
+        $(`#modalContainer p`).append(evn.psHpEvents[rdmInt(0, evn.psHpEvents.length)].event);
+        $(`#mb1`).append("Continue");
+        $(`#but2`).hide();
+        $(`#but3`).hide();
+        obj.health += 2;
+    }
+    else if (hexEvent === "nsHP") {
+        $(`#modalDrop`).show();
+        $(`#modalContainer p`).append(evn.nsHpEvents[rdmInt(0, evn.nsHpEvents.length)].event);
+        $(`#mb1`).append("Continue");
+        $(`#but2`).hide();
+        $(`#but3`).hide();
+        obj.health -= 4;
+    }
+    else if (hexEvent === "psO2") {
+        $(`#modalDrop`).show();
+        $(`#modalContainer p`).append(evn.psO2Events[rdmInt(0, evn.psO2Events.length)].event);
+        $(`#mb1`).append("Continue");
+        $(`#but2`).hide();
+        $(`#but3`).hide();
+        obj.oxygen += 2;
+    }
+    else if (hexEvent === "nsO2") {
+        $(`#modalDrop`).show();
+        $(`#modalContainer p`).append(evn.nsO2Events[rdmInt(0, evn.nsO2Events.length)].event);
+        $(`#mb1`).append("Continue");
+        $(`#but2`).hide();
+        $(`#but3`).hide();
+        obj.oxygen -= 4;
+    }
+    else if (hexEvent === "ship") {
+        $(`#modalDrop`).show();
+        $(`#modalContainer p`).append("You're back at your ship, what would you like to do now?");
+        $(`#mb1`).append("Save and Re-fuel");
+        $(`#mb2`).append("Save and take off for another planet");
+        $(`#mb3`).append("Continue");
+        obj.fuel += 3;
+    }
+    else if (hexEvent === "fuel") {
+        $(`#modalDrop`).show();
+        $(`#modalContainer p`).append(evn.psFuelEvents[rdmInt(0, evn.psFuelEvents.length)].event);
+        $(`#mb1`).append("Continue");
+        $(`#but2`).hide();
+        $(`#but3`).hide();
+        obj.fuel += 3;
+    }
+    else if (hexEvent === "warp") {
+        $(`#modalDrop`).show();
+        $(`#modalContainer p`).append(evn.warpDriveEvents[obj.warpCount].event);
+        $(`#mb1`).append("Continue");
+        $(`#but2`).hide();
+        $(`#but3`).hide();
+        obj.warpCount++;
+    }
+    
+}
 
 function gridMove() {
     if ($(this).data(`reach`) === true) {
         $(this).data(`visited`, true);
         let coordinates = $(this).data(`coordinates`).split(`, `);
+        let coords = $(this).data(`coordinates`);
 
         let myX = 0;
         let myY = 0;
         myX = parseInt(coordinates[0]);
         myY = parseInt(coordinates[1]);
+
+        if (planet === 1) {
+            for (let i = 0; i < planet1.length; i++) {
+                if (planet1[i].hexXY === coords) {
+                    planet1[i].visited = true;
+                    getEvent(planet1[i].event);
+                }
+            }
+        }
 
         $(`.hex`).each(function (index) {
             let xyCheck = $(this).data(`coordinates`).split(`, `);
@@ -1104,6 +1149,7 @@ $(document).ready(function () {
 });
 $(document).on("click", "#home", goHome);
 $(document).on("click", ".hex", gridMove);
+$(document).on("click", ".modalButton", gameAction);
 
 
 
