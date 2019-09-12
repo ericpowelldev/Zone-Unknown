@@ -1,11 +1,13 @@
+// Users model
 var db = require("../models");
 
+// User routes
 module.exports = function (app) {
     app.get("/api/users", function (req, res) {
-        db.Users.findAll({})
-            .then(function (obj) {
-                res.json(obj);
-            });
+        db.Users.findAll({}).then(function (obj) {
+            res.json(obj);
+            console.log("\n\nFIND ALL USERS:\n\n" + JSON.stringify(req.body) + "\n\n");
+        });
     });
 
     app.get("/api/users/:username", function (req, res) {
@@ -21,18 +23,10 @@ module.exports = function (app) {
 
     app.post("/api/users", function (req, res) {
         db.Users.create({
+            version: req.body.version,
             username: req.body.username,
-            hasBioScanner: req.body.hasBioScanner,
-            hasGeoMapper: req.body.hasGeoMapper,
-            hasLazer: req.body.hasLazer,
-            hasJetpack: req.body.hasJetpack,
-            hasWaterFilter: req.body.hasWaterFilter,
-            hasO2Scrubber: req.body.hasO2Scrubber,
-            warpCount: req.body.warpCount,
-            health: req.body.health,
-            oxygen: req.body.oxygen,
-            fuel: req.body.fuel,
-            planet: req.body.planet
+            password: req.body.password,
+            save: req.body.save
         }).then(function (obj) {
             res.json(obj);
             console.log("\n\nADDED NEW USER:\n\n" + JSON.stringify(req.body) + "\n\n");
