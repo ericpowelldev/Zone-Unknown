@@ -12,9 +12,7 @@
 
 
 let sav = {
-    version: `1.1.0`, // Version of game the save was created
-    // username: ``, // Username associated with the save
-    // password: ``, // Password associated with the save
+    version: `1.1.3`, // Version of game the save was created
     health: 10, // Health resource
     oxygen: 10, // Oxygen resource
     fuel: 0, // Fuel collected
