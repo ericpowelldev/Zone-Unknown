@@ -23,7 +23,6 @@ module.exports = function (app) {
 
     app.post("/api/users", function (req, res) {
         db.Users.create({
-            version: req.body.version,
             username: req.body.username,
             password: req.body.password,
             save: req.body.save
