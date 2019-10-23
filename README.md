@@ -5,7 +5,7 @@
 <p>Welcome to ZONE UNKNOWN, an adventure game based on survival. You find yourself stranded in a solar system due to your warp drive breaking down. Explore 3 planets and find parts to rebuild your warp drive. Along the way, you will encounter harsh events that will test your survival skills. You need to manage your HEALTH, OXYGEN and FUEL. You lose 1 OXYGEN per turn and will need 2 FUEL to replenish your O2 at the ship (middle hex). When your HEALTH hits 0, you lose! To advance to the next planet, collect the warp drive piece and return to your ship. Good luck and don't forget to use the chat if you get stuck.</p>
 
 ### Link to Heroku
-https://tranquil-citadel-22293.herokuapp.com/
+https://zone-unknown.herokuapp.com/
 
 ## Node Modules
 - Express
